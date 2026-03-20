@@ -1,0 +1,18 @@
+VS-XGBoost Summary
+==================
+
+Best candidate: {'alpha_aae': 1.05, 'beta_aae': -0.1}
+
+Test Accuracy: 0.8351
+Test F1: 0.8314
+
+AAE FPR: 0.2963
+SAE FPR: 0.1371
+FPR Gap: 0.1592
+
+AAE FNR: 0.1022
+SAE FNR: 0.2215
+FNR Gap: 0.1193
+
+DIfav: 0.3015
+DIunfav: 2.0122

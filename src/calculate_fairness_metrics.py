@@ -12,7 +12,8 @@ DIALECT_COL = "dialect_strict"
 models = {
     "XGBoost": "xgb_pred",
     "ToxicBERT": "toxicbert_pred",
-    "BERT": "bert_pred"
+    "BERT": "bert_pred",
+    "VS": "vs_pred"
 }
 
 # =========================
