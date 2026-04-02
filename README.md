@@ -11,4 +11,4 @@ python train_vs_xgboost.py \
   --dialect_col dialect_strict \
   --out_dir ../data/results/vs_xgb_train_time
 
-  
+  python train_adv_xgb.py
