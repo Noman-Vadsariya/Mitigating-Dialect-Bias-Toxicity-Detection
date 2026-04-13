@@ -5,7 +5,8 @@ import numpy as np
 # =========================
 # LOAD METRICS
 # =========================
-df = pd.read_csv("../../data/results/metrics.csv")
+# df = pd.read_csv("../../data/results/metrics.csv")
+df = pd.read_csv("../multitask_metrics.csv")
 
 models = df["Model"]
 

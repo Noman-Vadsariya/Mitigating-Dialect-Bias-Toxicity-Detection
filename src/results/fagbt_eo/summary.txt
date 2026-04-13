@@ -1,0 +1,14 @@
+Paper-style Adversarial Gradient Tree Boosting
+=============================================
+
+Best lambda: 0.5
+Test Accuracy: 0.8263
+Test F1: 0.8240
+AAE FPR: 0.3704
+SAE FPR: 0.1522
+FPR Gap: 0.2182
+AAE FNR: 0.1237
+SAE FNR: 0.2123
+FNR Gap: 0.0887
+DIfav: 0.3243
+DIunfav: 1.9299

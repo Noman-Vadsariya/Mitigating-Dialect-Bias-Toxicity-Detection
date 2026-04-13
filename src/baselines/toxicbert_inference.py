@@ -75,7 +75,7 @@ df["toxicbert_pred"] = (df["toxicbert_score"] > 0.5).astype(int)
 # =========================
 # SAVE RESULTS
 # =========================
-os.makedirs("../data/results", exist_ok=True)
+# os.makedirs("../data/results", exist_ok=True)
 df.to_csv(OUTPUT_FILE, index=False)
 
 print(f"Saved predictions → {OUTPUT_FILE}")

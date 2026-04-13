@@ -1,0 +1,21 @@
+{
+  "gamma": 0.3,
+  "objective": "BCE(y,p) - gamma * BCE(s,p)",
+  "sensitive_encoding": {
+    "AAE": 0,
+    "SAE": 1
+  },
+  "xgb_params": {
+    "max_depth": 50,
+    "eta": 0.05,
+    "subsample": 1.0,
+    "colsample_bytree": 1.0,
+    "min_child_weight": 1.0,
+    "lambda": 1.0,
+    "alpha": 0.0,
+    "seed": 42,
+    "objective": "binary:logistic",
+    "eval_metric": "logloss"
+  },
+  "num_boost_round": 150
+}
