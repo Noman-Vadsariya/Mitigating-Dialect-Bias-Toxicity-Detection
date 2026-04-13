@@ -49,7 +49,8 @@ from xgboost import XGBClassifier
 # =========================
 EMB_DIR = Path("../../data/embeddings")
 DATA_DIR = Path("../../data/processed/twitterAAE")
-RESULTS_DIR = Path("../../data/results/twitterAAE_experiments/fair_xgb/CE_FPR_squared_loss")
+# RESULTS_DIR = Path("../../data/results/twitterAAE_experiments/fair_xgb/CE_FPR_squared_loss")
+RESULTS_DIR = Path("../../data/results/twitterAAE_experiments/fair_xgb/CE_FPR_squared_loss_relaxed")
 MODELS_DIR = Path("../../models")
 
 TRAIN_EMB = EMB_DIR / "train_emb.npy"

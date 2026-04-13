@@ -24,15 +24,6 @@ This script:
       - FPR metrics vs lambda
       - FNR metrics vs lambda
 
-Expected files
---------------
-../data/embeddings/train_emb.npy
-../data/embeddings/val_emb.npy
-../data/embeddings/test_emb.npy
-../data/processed/train.csv
-../data/processed/val.csv
-../data/processed/test.csv
-
 Expected CSV columns
 --------------------
 - label
@@ -86,7 +77,6 @@ THRESHOLDS = np.linspace(0.05, 0.95, 37)  # 0.05, 0.075, ... , 0.95
 # Sweep fairness-performance tradeoff weight.
 #   lambda_fairness = 1.0 -> focus only on FPR gap
 #   lambda_fairness = 0.0 -> focus only on F1
-LAMBDA_VALUES = [0.0, 0.25, 0.4, 0.5, 0.6, 0.7, 0.75, 0.85, 1.0]
 
 # Optional minimum validation F1 floor.
 # Set to None to disable. Example: 0.70.
@@ -94,9 +84,9 @@ MIN_VAL_F1 = None
 
 # XGBoost hyperparameters (fixed across the sweep)
 XGB_PARAMS = dict(
-    max_depth=5,
+    max_depth=50,
     n_estimators=100,
-    learning_rate=0.1,
+    learning_rate=0.05,
     objective="binary:logistic",
     eval_metric="logloss",
     random_state=SEED,
@@ -279,7 +269,7 @@ def main() -> None:
     results: List[Dict[str, float]] = []
 
     # Sweep over lambda values.
-    for lam in LAMBDA_VALUES:
+    for lam in np.arange(0.0, 1.05, 0.025):
         print(f"\n=== Searching thresholds for lambda_fairness={lam} ===")
         best = search_thresholds(
             y_val=y_val,
@@ -352,9 +342,20 @@ def main() -> None:
     plt.savefig(RESULTS_DIR / "xgb_threshold_fnr_plot.png", dpi=300)
     plt.close()
 
+    plt.figure(figsize=(8, 5))
+    plt.plot(results_df["lambda_fairness"], results_df["test_f1"], marker="o", label="F1 Score")
+    plt.xlabel("Lambda (fairness weight)")
+    plt.ylabel("F1 Score")
+    plt.title("F1 Score vs Composite-Score Weight")
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(RESULTS_DIR / "xgb_threshold_f1_plot.png", dpi=300)
+    plt.close()
+
     print("Saved plots to:")
     print(" -", RESULTS_DIR / "xgb_threshold_fpr_plot.png")
     print(" -", RESULTS_DIR / "xgb_threshold_fnr_plot.png")
+    print(" -", RESULTS_DIR / "xgb_threshold_f1_plot.png")
 
     # Print a concise best row for convenience.
     best_row = results_df.sort_values(["test_fpr_gap", "test_f1"], ascending=[True, False]).iloc[0]

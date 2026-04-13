@@ -589,7 +589,7 @@ def main() -> None:
 
     all_rows: List[Dict[str, float]] = []
 
-    for gamma in np.arange(0, 1, 1/50):
+    for gamma in np.arange(0.8, 2, 1/50):
         print(f"\n=== Training FAGTB-NN with gamma={gamma:.3f} ===")
         booster, train_metrics, val_metrics = train_fagtb_one_gamma(
             X_train=X_train,

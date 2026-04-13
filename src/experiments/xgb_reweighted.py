@@ -61,13 +61,12 @@ RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 MODELS_DIR.mkdir(parents=True, exist_ok=True)
 
 SEED = 42
-WEIGHT_VALUES = [1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0, 3.25, 3.5, 3.75, 4, 4.25, 4.5, 5.0]
 
 # XGBoost hyperparameters (keep the same across sweep for fairness comparison)
 XGB_PARAMS = dict(
-    max_depth=5,
+    max_depth=50,
     n_estimators=100,
-    learning_rate=0.1,
+    learning_rate=0.05,
     objective="binary:logistic",
     eval_metric="logloss",
     random_state=SEED,
@@ -201,7 +200,7 @@ def main() -> None:
 
     all_metrics: List[Dict[str, float]] = []
 
-    for alpha in WEIGHT_VALUES:
+    for alpha in np.arange(1, 8, 0.25):
         print(f"\n=== Training XGBoost with alpha={alpha} ===")
         metrics, test_prob, test_pred, model = train_and_eval_one_alpha(
             alpha=alpha,
@@ -263,12 +262,23 @@ def main() -> None:
     plt.savefig(RESULTS_DIR / "xgb_fnr_vs_alpha.png", dpi=300)
     plt.close()
 
+    plt.figure(figsize=(8, 5))
+    plt.plot(metrics_df["alpha"], metrics_df["f1"], marker="o", label="F1 Score")
+    plt.xlabel("AAE non-toxic weight (alpha)")
+    plt.ylabel("F1 Score")
+    plt.title("F1 Score vs Re-weighting Strength")
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(RESULTS_DIR / "xgb_f1_vs_alpha.png", dpi=300)
+    plt.close()
+
     print("Saved plots to:")
     print(" -", RESULTS_DIR / "xgb_fpr_vs_alpha.png")
     print(" -", RESULTS_DIR / "xgb_fnr_vs_alpha.png")
+    print(" -", RESULTS_DIR / "xgb_f1_vs_alpha.png")
 
     # Print best alpha according to smallest FPR gap, then highest F1 as a tie-breaker.
-    best = metrics_df.sort_values(["fpr_gap", "-f1"], ascending=[True, False]).iloc[0]
+    best = metrics_df.sort_values(["fpr_gap", "f1"], ascending=[True, False]).iloc[0]
     print("\nBest setting by low FPR gap (tie-breaker F1):")
     print(best.to_dict())
 
