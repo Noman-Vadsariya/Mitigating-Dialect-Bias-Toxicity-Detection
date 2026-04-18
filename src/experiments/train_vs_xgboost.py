@@ -179,7 +179,7 @@ def search_vs_parameters(model, X_val, val_df, label_col, group_col):
     # First search space
     # Intentionally small for quick debugging
     alpha_grid = [0.6, 0.8, 1.0, 1.2]
-    beta_grid = [-1.0, -0.5, -0.2, 0.0, 0.2]
+    beta_grid = [-2.0, -1.5, -1.2, -1.0, -0.8, -0.5, -0.2, 0.0, 0.2]
 
     results = []
 
