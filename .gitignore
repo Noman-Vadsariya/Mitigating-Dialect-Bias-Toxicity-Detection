@@ -1,2 +1,7 @@
 venv
 src/models/
+.DS_Store
+__pycache__/
+*.pyc
+*.joblib
+pdfs/
