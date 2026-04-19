@@ -11,8 +11,10 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 MODEL_NAME = "unitary/toxic-bert"
 BATCH_SIZE = 32
 
-INPUT_FILE = "../data/processed/test.csv"
-OUTPUT_FILE = "../data/results/toxicbert_predictions.csv"
+# INPUT_FILE = "../data/processed/test.csv"
+INPUT_FILE = "../../data/processed/twitterAAE/unbalanced/test.csv"
+# OUTPUT_FILE = "../data/results/toxicbert_predictions.csv"
+OUTPUT_FILE = "../../data/results/toxicbert_predictions.csv"
 
 # =========================
 # LOAD MODEL

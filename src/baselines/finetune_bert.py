@@ -15,9 +15,13 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 # =========================
 # LOAD DATA
 # =========================
-train_df = pd.read_csv("../../data/processed/twitterAAE/train.csv")
-val_df = pd.read_csv("../../data/processed/twitterAAE/val.csv")
-test_df = pd.read_csv("../../data/processed/twitterAAE/test.csv")
+# train_df = pd.read_csv("../../data/processed/twitterAAE/train.csv")
+# val_df = pd.read_csv("../../data/processed/twitterAAE/val.csv")
+# test_df = pd.read_csv("../../data/processed/twitterAAE/test.csv")
+
+train_df = pd.read_csv("../../data/processed/twitterAAE/unbalanced/train.csv")
+val_df = pd.read_csv("../../data/processed/twitterAAE/unbalanced/val.csv")
+test_df = pd.read_csv("../../data/processed/twitterAAE/unbalanced/test.csv")
 
 # =========================
 # TOKENIZER

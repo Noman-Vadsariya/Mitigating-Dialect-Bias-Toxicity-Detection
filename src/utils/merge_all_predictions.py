@@ -3,9 +3,13 @@ import os
 import pandas as pd
 
 # Load predictions
-xgb = pd.read_csv("../data/results/xgb_predictions.csv")
-toxic = pd.read_csv("../data/results/toxicbert_predictions.csv")
-bert = pd.read_csv("../data/results/bert_finetuned_predictions.csv")
+# xgb = pd.read_csv("../data/results/xgb_predictions.csv")
+# toxic = pd.read_csv("../data/results/toxicbert_predictions.csv")
+# bert = pd.read_csv("../data/results/bert_finetuned_predictions.csv")
+
+xgb = pd.read_csv("../../data/results/xgb_predictions.csv")
+toxic = pd.read_csv("../../data/results/toxicbert_predictions.csv")
+bert = pd.read_csv("../../data/results/bert_finetuned_predictions.csv")
 
 # Merge
 df = xgb.copy()
@@ -21,6 +25,6 @@ if os.path.exists(file_path):
 
 
 # Save
-df.to_csv("../data/results/all_predictions.csv", index=False)
+df.to_csv("../../data/results/all_predictions.csv", index=False)
 
 print("Merged predictions saved!")
