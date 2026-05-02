@@ -44,8 +44,8 @@ from xgboost import XGBClassifier
 # =========================
 # CONFIG
 # =========================
-EMB_DIR = Path("../../data/embeddings")
-DATA_DIR = Path("../../data/processed/twitterAAE")
+EMB_DIR = Path("../../data/embeddings/twitterAAE/balanced/")
+DATA_DIR = Path("../../data/processed/twitterAAE/balanced/")
 RESULTS_DIR = Path("../../data/results/twitterAAE_experiments/xgb")
 MODELS_DIR = Path("../../models")
 
@@ -243,6 +243,7 @@ def main() -> None:
     plt.figure(figsize=(8, 5))
     plt.plot(metrics_df["alpha"], metrics_df["fpr_AAE"], marker="o", label="FPR AAE")
     plt.plot(metrics_df["alpha"], metrics_df["fpr_SAE"], marker="o", label="FPR SAE")
+    plt.plot(metrics_df["alpha"], metrics_df["fpr_gap"], marker="o", label="FPR Gap")
     plt.xlabel("AAE non-toxic weight (alpha)")
     plt.ylabel("FPR")
     plt.title("FPR vs Re-weighting Strength")
@@ -254,6 +255,7 @@ def main() -> None:
     plt.figure(figsize=(8, 5))
     plt.plot(metrics_df["alpha"], metrics_df["fnr_AAE"], marker="o", label="FNR AAE")
     plt.plot(metrics_df["alpha"], metrics_df["fnr_SAE"], marker="o", label="FNR SAE")
+    plt.plot(metrics_df["alpha"], metrics_df["fnr_gap"], marker="o", label="FNR Gap")   
     plt.xlabel("AAE non-toxic weight (alpha)")
     plt.ylabel("FNR")
     plt.title("FNR vs Re-weighting Strength")
