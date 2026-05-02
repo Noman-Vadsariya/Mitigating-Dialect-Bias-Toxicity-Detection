@@ -1,299 +1,358 @@
-import os
-import json
+# Imports
 import argparse
+import json
+import os
 import joblib
 import numpy as np
 import pandas as pd
-import xgboost as xgb
+
+from xgboost import XGBClassifier
 from sklearn.metrics import accuracy_score, f1_score
 
 
-def sigmoid(x):
-    return 1.0 / (1.0 + np.exp(-x))
+# Argument parsing
+def parse_args():
+    parser = argparse.ArgumentParser(description="Train XGBoost + Vector Scaling model")
+
+    parser.add_argument("--train_csv", type=str, required=True)
+    parser.add_argument("--val_csv", type=str, required=True)
+    parser.add_argument("--test_csv", type=str, required=True)
+
+    parser.add_argument("--train_emb", type=str, required=True)
+    parser.add_argument("--val_emb", type=str, required=True)
+    parser.add_argument("--test_emb", type=str, required=True)
+
+    parser.add_argument("--dialect_col", type=str, default="dialect_strict")
+    parser.add_argument("--label_col", type=str, default="label")
+    parser.add_argument("--out_dir", type=str, required=True)
+
+    return parser.parse_args()
 
 
-def load_split(path, dialect_col):
-    df = pd.read_csv(path)
-    if "label" not in df.columns:
-        raise ValueError(f"Missing 'label' column in {path}")
-    if dialect_col not in df.columns:
-        raise ValueError(f"Missing '{dialect_col}' column in {path}")
-    return df
-
-
-def compute_group_metrics(df, pred_col, dialect_col):
-    out = {}
-    for group in ["AAE", "SAE"]:
-        subset = df[df[dialect_col] == group]
-
-        tp = ((subset["label"] == 1) & (subset[pred_col] == 1)).sum()
-        fp = ((subset["label"] == 0) & (subset[pred_col] == 1)).sum()
-        tn = ((subset["label"] == 0) & (subset[pred_col] == 0)).sum()
-        fn = ((subset["label"] == 1) & (subset[pred_col] == 0)).sum()
-
-        fpr = fp / (fp + tn + 1e-8)
-        fnr = fn / (fn + tp + 1e-8)
-        tpr = tp / (tp + fn + 1e-8)
-
-        out[group] = {
-            "TP": int(tp),
-            "FP": int(fp),
-            "TN": int(tn),
-            "FN": int(fn),
-            "FPR": float(fpr),
-            "FNR": float(fnr),
-            "TPR": float(tpr),
-            "N": int(len(subset)),
-        }
-
-    out["FPR_gap"] = abs(out["AAE"]["FPR"] - out["SAE"]["FPR"])
-    out["FNR_gap"] = abs(out["AAE"]["FNR"] - out["SAE"]["FNR"])
-    out["TPR_gap"] = abs(out["AAE"]["TPR"] - out["SAE"]["TPR"])
-
-    p_aae_non = (df[df[dialect_col] == "AAE"][pred_col] == 0).mean()
-    p_sae_non = (df[df[dialect_col] == "SAE"][pred_col] == 0).mean()
-    p_aae_tox = (df[df[dialect_col] == "AAE"][pred_col] == 1).mean()
-    p_sae_tox = (df[df[dialect_col] == "SAE"][pred_col] == 1).mean()
-
-    out["DIfav"] = float(p_aae_non / (p_sae_non + 1e-8))
-    out["DIunfav"] = float(p_aae_tox / (p_sae_tox + 1e-8))
-    return out
-
-
-def make_vs_objective(group_train, alpha_aae=1.0, beta_aae=0.0, alpha_sae=1.0, beta_sae=0.0):
-    """
-    Training-time VS-loss objective.
-
-    For each sample:
-        s = alpha_g * z + beta_g
-        loss = BCEWithLogits(s, y)
-
-    Gradient wrt z:
-        dL/dz = alpha_g * (sigmoid(s) - y)
-
-    Hessian wrt z:
-        d2L/dz2 = alpha_g^2 * sigmoid(s) * (1 - sigmoid(s))
-    """
-    group_train = np.asarray(group_train)
-
-    def objective(preds, dtrain):
-        y = dtrain.get_label()
-
-        alpha = np.where(group_train == 1, alpha_aae, alpha_sae)
-        beta = np.where(group_train == 1, beta_aae, beta_sae)
-
-        s = alpha * preds + beta
-        p = sigmoid(s)
-
-        grad = (p - y) * alpha
-        hess = p * (1.0 - p) * (alpha ** 2)
-        return grad, hess
-
-    return objective
-
-
-def predict_with_vs(booster, X, group_array,
-                    alpha_aae=1.0, beta_aae=0.0, alpha_sae=1.0, beta_sae=0.0):
-    dmat = xgb.DMatrix(X)
-    raw_margin = booster.predict(dmat, output_margin=True)
-
-    group_array = np.asarray(group_array)
-    alpha = np.where(group_array == 1, alpha_aae, alpha_sae)
-    beta = np.where(group_array == 1, beta_aae, beta_sae)
-
-    s = alpha * raw_margin + beta
-    prob = sigmoid(s)
-    pred = (prob >= 0.5).astype(int)
-    return prob, pred
-
-
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--train_csv", default="data/processed/train.csv")
-    parser.add_argument("--val_csv", default="data/processed/val.csv")
-    parser.add_argument("--test_csv", default="data/processed/test.csv")
-    parser.add_argument("--train_emb", default="data/processed/train_emb.npy")
-    parser.add_argument("--val_emb", default="data/processed/val_emb.npy")
-    parser.add_argument("--test_emb", default="data/processed/test_emb.npy")
-    parser.add_argument("--dialect_col", default="dialect_strict")
-    parser.add_argument("--num_round", type=int, default=150)
-    parser.add_argument("--max_depth", type=int, default=5)
-    parser.add_argument("--eta", type=float, default=0.08)
-    parser.add_argument("--subsample", type=float, default=0.9)
-    parser.add_argument("--colsample_bytree", type=float, default=0.9)
-    parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--out_dir", default="results/vs_xgb_train_time")
-    args = parser.parse_args()
-
-    os.makedirs(args.out_dir, exist_ok=True)
-
-    train_df = load_split(args.train_csv, args.dialect_col)
-    val_df = load_split(args.val_csv, args.dialect_col)
-    test_df = load_split(args.test_csv, args.dialect_col)
-
+# Load data:
+# Numeric embeddings from .npy
+# Labels and group metadata from .csv
+def load_data(args):
     X_train = np.load(args.train_emb)
     X_val = np.load(args.val_emb)
     X_test = np.load(args.test_emb)
 
-    y_train = train_df["label"].astype(int).values
-    y_val = val_df["label"].astype(int).values
-    y_test = test_df["label"].astype(int).values
+    train_df = pd.read_csv(args.train_csv)
+    val_df = pd.read_csv(args.val_csv)
+    test_df = pd.read_csv(args.test_csv)
 
-    group_train = train_df[args.dialect_col].map({"SAE": 0, "AAE": 1}).astype(int).values
-    group_val = val_df[args.dialect_col].map({"SAE": 0, "AAE": 1}).astype(int).values
-    group_test = test_df[args.dialect_col].map({"SAE": 0, "AAE": 1}).astype(int).values
+    y_train = train_df[args.label_col].values
+    y_val = val_df[args.label_col].values
+    y_test = test_df[args.label_col].values
 
-    dtrain = xgb.DMatrix(X_train, label=y_train)
-    dval = xgb.DMatrix(X_val, label=y_val)
-    dtest = xgb.DMatrix(X_test, label=y_test)
+    return X_train, X_val, X_test, train_df, val_df, test_df, y_train, y_val, y_test
 
-    # Small, practical search over AAE scaling/shift.
-    # SAE stays fixed at alpha=1.0, beta=0.0.
-    candidates = [
-        {"alpha_aae": 1.0, "beta_aae": 0.0},
-        {"alpha_aae": 0.95, "beta_aae": -0.10},
-        {"alpha_aae": 0.90, "beta_aae": -0.15},
-        {"alpha_aae": 0.90, "beta_aae": -0.25},
-        {"alpha_aae": 1.05, "beta_aae": -0.10},
-    ]
 
-    params = {
-        "max_depth": args.max_depth,
-        "eta": args.eta,
-        "subsample": args.subsample,
-        "colsample_bytree": args.colsample_bytree,
-        "tree_method": "hist",
-        "seed": args.seed,
-        "verbosity": 0,
-    }
+# Train the base XGBoost model
+# This is the base toxicity model. Train exactly like the baseline first, then apply vector 
+# scaling afterwards.
+def train_base_xgb(X_train, y_train, X_val, y_val):
+    model = XGBClassifier(
+        max_depth=5,
+        n_estimators=100,
+        learning_rate=0.1,
+        objective="binary:logistic",
+        eval_metric="logloss",
+        random_state=42
+    )
 
-    best_candidate = None
-    best_score = None
-    best_booster = None
+    model.fit(
+        X_train,
+        y_train,
+        eval_set=[(X_val, y_val)],
+        verbose=True
+    )
 
-    print("Training VS-XGBoost candidates...\n")
+    return model
 
-    for cand in candidates:
-        alpha_aae = cand["alpha_aae"]
-        beta_aae = cand["beta_aae"]
 
-        obj = make_vs_objective(
-            group_train=group_train,
-            alpha_aae=alpha_aae,
-            beta_aae=beta_aae,
-            alpha_sae=1.0,
-            beta_sae=0.0
-        )
+# Math helpers
+# Sigmoid
+def sigmoid(x):
+    return 1.0 / (1.0 + np.exp(-x))
 
-        booster = xgb.train(
-            params=params,
-            dtrain=dtrain,
-            num_boost_round=args.num_round,
-            obj=obj
-        )
+# Logit: z = log(p / (1 - p))
+def safe_logit(p, eps=1e-6):
+    p = np.clip(p, eps, 1 - eps)
+    return np.log(p / (1 - p))
 
-        val_prob, val_pred = predict_with_vs(
-            booster,
-            X_val,
-            group_val,
-            alpha_aae=alpha_aae,
-            beta_aae=beta_aae,
-            alpha_sae=1.0,
-            beta_sae=0.0
-        )
+# Apply vector scaling by group
+# s = alpha_g * z + beta_g
+# alpha_g rescales the margin
+# beta_g shifts the boundary
+#
+# For each example:
+# - If it belongs to AAE, apply the AAE transform
+# - If it belongs to SAE, apply the SAE transform
+# For simplicity, keep SAE fixed:
+# - alpha_sae = 1
+# - beta_sae = 0
+# Which means SAE scores stay unchanged, only adjusting AAE (since fairness problem is AAE 
+# being overflagged)
+def apply_vector_scaling(
+    probs,
+    groups,
+    alpha_aae,
+    beta_aae,
+    alpha_sae=1.0,
+    beta_sae=0.0
+):
+    logits = safe_logit(probs)
+    scaled_logits = logits.copy()
 
-        val_tmp = val_df.copy()
-        val_tmp["vs_pred"] = val_pred
+    is_aae = (groups == "AAE")
+    is_sae = (groups == "SAE")
 
-        metrics = compute_group_metrics(val_tmp, "vs_pred", args.dialect_col)
-        val_acc = accuracy_score(y_val, val_pred)
-        val_f1 = f1_score(y_val, val_pred)
+    scaled_logits[is_aae] = alpha_aae * logits[is_aae] + beta_aae
+    scaled_logits[is_sae] = alpha_sae * logits[is_sae] + beta_sae
 
-        # Prefer lower FPR gap, then higher F1, then higher accuracy
-        score = (metrics["FPR_gap"], -val_f1, -val_acc)
+    scaled_probs = sigmoid(scaled_logits)
+    preds = (scaled_probs >= 0.5).astype(int)
 
-        print(
-            f"alpha_aae={alpha_aae:.2f}, beta_aae={beta_aae:.2f} | "
-            f"val_acc={val_acc:.4f}, val_f1={val_f1:.4f}, "
-            f"FPR_gap={metrics['FPR_gap']:.4f}, DIunfav={metrics['DIunfav']:.4f}"
-        )
+    return scaled_probs, preds
 
-        if best_score is None or score < best_score:
-            best_score = score
-            best_candidate = cand
-            best_booster = booster
 
-    print("\nBest candidate:", best_candidate)
+# Add fairness metric helpers
+# Before tuning VS, measure whether it is actually helping
+# FPR = FP / (FP + TN)
+# FNR = FN / (FN + TP)
+def compute_fpr(df, label_col, pred_col, group_col, group_name):
+    subset = df[df[group_col] == group_name]
+    fp = ((subset[label_col] == 0) & (subset[pred_col] == 1)).sum()
+    tn = ((subset[label_col] == 0) & (subset[pred_col] == 0)).sum()
+    return fp / (fp + tn + 1e-8)
 
-    # Final test predictions
-    test_prob, test_pred = predict_with_vs(
-        best_booster,
-        X_test,
-        group_test,
-        alpha_aae=best_candidate["alpha_aae"],
-        beta_aae=best_candidate["beta_aae"],
+def compute_fnr(df, label_col, pred_col, group_col, group_name):
+    subset = df[df[group_col] == group_name]
+    fn = ((subset[label_col] == 1) & (subset[pred_col] == 0)).sum()
+    tp = ((subset[label_col] == 1) & (subset[pred_col] == 1)).sum()
+    return fn / (fn + tp + 1e-8)
+
+def compute_disparate_impact(df, pred_col, group_col):
+    p_pred1_aae = (df[df[group_col] == "AAE"][pred_col] == 1).mean()
+    p_pred1_sae = (df[df[group_col] == "SAE"][pred_col] == 1).mean()
+
+    p_pred0_aae = (df[df[group_col] == "AAE"][pred_col] == 0).mean()
+    p_pred0_sae = (df[df[group_col] == "SAE"][pred_col] == 0).mean()
+
+    di_unfav = p_pred1_aae / (p_pred1_sae + 1e-8)
+    di_fav = p_pred0_aae / (p_pred0_sae + 1e-8)
+
+    return di_fav, di_unfav
+
+
+# Metric summary
+def evaluate_predictions(df, label_col, pred_col, group_col):
+    metrics = {}
+
+    y_true = df[label_col].values
+    y_pred = df[pred_col].values
+
+    metrics["accuracy"] = accuracy_score(y_true, y_pred)
+    metrics["f1"] = f1_score(y_true, y_pred)
+
+    metrics["FPR_AAE"] = compute_fpr(df, label_col, pred_col, group_col, "AAE")
+    metrics["FPR_SAE"] = compute_fpr(df, label_col, pred_col, group_col, "SAE")
+    metrics["FPR_gap"] = abs(metrics["FPR_AAE"] - metrics["FPR_SAE"])
+
+    metrics["FNR_AAE"] = compute_fnr(df, label_col, pred_col, group_col, "AAE")
+    metrics["FNR_SAE"] = compute_fnr(df, label_col, pred_col, group_col, "SAE")
+    metrics["FNR_gap"] = abs(metrics["FNR_AAE"] - metrics["FNR_SAE"])
+
+    di_fav, di_unfav = compute_disparate_impact(df, pred_col, group_col)
+    metrics["DIfav"] = di_fav
+    metrics["DIunfav"] = di_unfav
+
+    return metrics
+
+
+# Validation search
+def search_vs_parameters(model, X_val, val_df, label_col, group_col):
+    # Gets the original toxic probability from XGBoost for every validation example
+    base_probs = model.predict_proba(X_val)[:, 1]
+
+    # First search space
+    # Intentionally small for quick debugging
+    alpha_grid = [0.6, 0.8, 1.0, 1.2]
+    beta_grid = [-2.0, -1.5, -1.2, -1.0, -0.8, -0.5, -0.2, 0.0, 0.2]
+
+    results = []
+
+    for alpha_aae in alpha_grid:
+        for beta_aae in beta_grid:
+            temp_df = val_df.copy()
+
+            scaled_probs, scaled_preds = apply_vector_scaling(
+                probs=base_probs,
+                groups=temp_df[group_col].values,
+                alpha_aae=alpha_aae,
+                beta_aae=beta_aae,
+                alpha_sae=1.0,
+                beta_sae=0.0
+            )
+
+            temp_df["vs_prob"] = scaled_probs
+            temp_df["vs_pred"] = scaled_preds
+
+            metrics = evaluate_predictions(
+                df=temp_df,
+                label_col=label_col,
+                pred_col="vs_pred",
+                group_col=group_col
+            )
+
+            metrics["alpha_aae"] = alpha_aae
+            metrics["beta_aae"] = beta_aae
+
+            results.append(metrics)
+
+    results_df = pd.DataFrame(results)
+    return results_df, base_probs
+
+
+# Selects best candidate
+def pick_best_candidate(results_df, min_f1_ratio=0.98):
+    baseline_f1 = results_df.loc[
+        (results_df["alpha_aae"] == 1.0) & (results_df["beta_aae"] == 0.0),
+        "f1"
+    ].iloc[0]
+
+    eligible = results_df[results_df["f1"] >= min_f1_ratio * baseline_f1].copy()
+
+    if len(eligible) == 0:
+        eligible = results_df.copy()
+
+    eligible = eligible.sort_values(
+        by=["FPR_gap", "FNR_gap", "f1"],
+        ascending=[True, True, False]
+    )
+
+    best_row = eligible.iloc[0].to_dict()
+    return best_row
+
+
+# Run best setting on test data
+def apply_best_vs_to_test(model, X_test, test_df, best_params, group_col):
+    base_probs = model.predict_proba(X_test)[:, 1]
+
+    scaled_probs, scaled_preds = apply_vector_scaling(
+        probs=base_probs,
+        groups=test_df[group_col].values,
+        alpha_aae=best_params["alpha_aae"],
+        beta_aae=best_params["beta_aae"],
         alpha_sae=1.0,
         beta_sae=0.0
     )
 
-    out_df = test_df.copy()
-    out_df["vs_prob"] = test_prob
-    out_df["vs_pred"] = test_pred
+    output_df = test_df.copy()
+    output_df["xgb_base_prob"] = base_probs
+    output_df["vs_prob"] = scaled_probs
+    output_df["vs_pred"] = scaled_preds
 
-    pred_path = os.path.join(args.out_dir, "vs_xgb_predictions.csv")
-    out_df.to_csv(pred_path, index=False)
+    return output_df
 
-    model_path = os.path.join(args.out_dir, "vs_xgb_model.json")
-    best_booster.save_model(model_path)
+def write_metrics_summary_txt(summary_txt_path, test_metrics):
+        with open(summary_txt_path, "w") as f:
+            f.write("===== VS-XGBoost =====\n")
+            f.write(f"Accuracy: {test_metrics['accuracy']:.4f}\n")
+            f.write(f"F1: {test_metrics['f1']:.4f}\n")
+            f.write(f"FPR AAE: {test_metrics['FPR_AAE']:.4f}\n")
+            f.write(f"FPR SAE: {test_metrics['FPR_SAE']:.4f}\n")
+            f.write(f"FPR Gap: {test_metrics['FPR_gap']:.4f}\n")
+            f.write(f"FNR AAE: {test_metrics['FNR_AAE']:.4f}\n")
+            f.write(f"FNR SAE: {test_metrics['FNR_SAE']:.4f}\n")
+            f.write(f"FNR Gap: {test_metrics['FNR_gap']:.4f}\n")
+            f.write(f"DIfav: {test_metrics['DIfav']:.4f}\n")
+            f.write(f"DIunfav: {test_metrics['DIunfav']:.4f}\n")
 
-    test_acc = accuracy_score(y_test, test_pred)
-    test_f1 = f1_score(y_test, test_pred)
-    test_metrics = compute_group_metrics(out_df, "vs_pred", args.dialect_col)
+# Save outputs
+def save_outputs(out_dir, model, results_df, best_params, test_output_df, test_metrics):
+    os.makedirs(out_dir, exist_ok=True)
 
-    summary = {
-        "best_candidate": best_candidate,
-        "test_accuracy": float(test_acc),
-        "test_f1": float(test_f1),
-        "AAE": test_metrics["AAE"],
-        "SAE": test_metrics["SAE"],
-        "FPR_gap": test_metrics["FPR_gap"],
-        "FNR_gap": test_metrics["FNR_gap"],
-        "TPR_gap": test_metrics["TPR_gap"],
-        "DIfav": test_metrics["DIfav"],
-        "DIunfav": test_metrics["DIunfav"],
-    }
+    model_path = os.path.join(out_dir, "vs_xgb_model.joblib")
+    candidates_path = os.path.join(out_dir, "vs_xgb_candidates.csv")
+    summary_json_path = os.path.join(out_dir, "vs_xgb_summary.json")
+    preds_path = os.path.join(out_dir, "vs_xgb_predictions.csv")
 
-    json_path = os.path.join(args.out_dir, "vs_xgb_summary.json")
-    txt_path = os.path.join(args.out_dir, "vs_xgb_summary.txt")
+    summary_txt_path = "data/results/vs_xgb_train_time/vs_xgb_summary.txt"
 
-    with open(json_path, "w") as f:
-        json.dump(summary, f, indent=2)
+    joblib.dump(model, model_path)
+    results_df.to_csv(candidates_path, index=False)
+    test_output_df.to_csv(preds_path, index=False)
 
-    with open(txt_path, "w") as f:
-        f.write("VS-XGBoost Summary\n")
-        f.write("==================\n\n")
-        f.write(f"Best candidate: {best_candidate}\n\n")
-        f.write(f"Test Accuracy: {test_acc:.4f}\n")
-        f.write(f"Test F1: {test_f1:.4f}\n\n")
+    with open(summary_json_path, "w") as f:
+        json.dump(best_params, f, indent=2)
 
-        f.write(f"AAE FPR: {test_metrics['AAE']['FPR']:.4f}\n")
-        f.write(f"SAE FPR: {test_metrics['SAE']['FPR']:.4f}\n")
-        f.write(f"FPR Gap: {test_metrics['FPR_gap']:.4f}\n\n")
+    write_metrics_summary_txt(summary_txt_path, test_metrics)
 
-        f.write(f"AAE FNR: {test_metrics['AAE']['FNR']:.4f}\n")
-        f.write(f"SAE FNR: {test_metrics['SAE']['FNR']:.4f}\n")
-        f.write(f"FNR Gap: {test_metrics['FNR_gap']:.4f}\n\n")
+    print(f"Saved model -> {model_path}")
+    print(f"Saved candidates -> {candidates_path}")
+    print(f"Saved summary json -> {summary_json_path}")
+    print(f"Saved summary txt -> {summary_txt_path}")
+    print(f"Saved predictions -> {preds_path}")
 
-        f.write(f"DIfav: {test_metrics['DIfav']:.4f}\n")
-        f.write(f"DIunfav: {test_metrics['DIunfav']:.4f}\n")
 
-    print(f"\nSaved predictions to: {pred_path}")
-    print(f"Saved model to: {model_path}")
-    print(f"Saved summaries to: {json_path} and {txt_path}")
-    print(f"Test Accuracy: {test_acc:.4f}")
-    print(f"Test F1: {test_f1:.4f}")
-    print(f"Test FPR Gap: {test_metrics['FPR_gap']:.4f}")
-    print(f"Test FNR Gap: {test_metrics['FNR_gap']:.4f}")
+def main():
+    args = parse_args()
+
+    X_train, X_val, X_test, train_df, val_df, test_df, y_train, y_val, y_test = load_data(args)
+
+    print("Training base XGBoost model...")
+    model = train_base_xgb(X_train, y_train, X_val, y_val)
+
+    print("\nSearching vector scaling parameters on validation set...")
+    results_df, _ = search_vs_parameters(
+        model=model,
+        X_val=X_val,
+        val_df=val_df,
+        label_col=args.label_col,
+        group_col=args.dialect_col
+    )
+
+    print("\nCandidate results:")
+    print(results_df.sort_values(by=["FPR_gap", "f1"], ascending=[True, False]).head(10))
+
+    best_params = pick_best_candidate(results_df)
+
+    print("\nBest VS parameters:")
+    print(best_params)
+
+    print("\nApplying best VS parameters to test set...")
+    test_output_df = apply_best_vs_to_test(
+        model=model,
+        X_test=X_test,
+        test_df=test_df,
+        best_params=best_params,
+        group_col=args.dialect_col
+    )
+
+    test_metrics = evaluate_predictions(
+        df=test_output_df,
+        label_col=args.label_col,
+        pred_col="vs_pred",
+        group_col=args.dialect_col
+    )
+
+    print("\nFinal test metrics:")
+    for k, v in test_metrics.items():
+        print(f"{k}: {v:.4f}" if isinstance(v, float) else f"{k}: {v}")
+
+    best_params["test_metrics"] = test_metrics
+            
+    save_outputs(
+        out_dir=args.out_dir,
+        model=model,
+        results_df=results_df,
+        best_params=best_params,
+        test_output_df=test_output_df,
+        test_metrics=test_metrics
+    )
+
 
 if __name__ == "__main__":
     main()
