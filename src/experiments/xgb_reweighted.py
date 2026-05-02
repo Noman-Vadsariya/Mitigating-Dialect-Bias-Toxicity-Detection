@@ -1,32 +1,3 @@
-"""XGBoost reweighting sweep for fairness analysis.
-
-This script:
-1. Loads embeddings for train/val/test.
-2. Loads processed CSVs with labels and dialect labels.
-3. Trains XGBoost multiple times with different sample-weight values.
-4. Evaluates each model on the test set.
-5. Saves predictions for each weight setting.
-6. Produces two line plots:
-      - FPR vs weight
-      - FNR vs weight
-
-Expected files:
-    ../data/embeddings/train_emb.npy
-    ../data/embeddings/val_emb.npy
-    ../data/embeddings/test_emb.npy
-    ../data/processed/train.csv
-    ../data/processed/val.csv
-    ../data/processed/test.csv
-
-Expected columns in CSVs:
-    - label
-    - dialect_strict   (values: AAE or SAE)
-
-Weighting rule:
-    Increase weight for AAE non-toxic samples (dialect_strict == AAE and label == 0).
-    This targets the group most often over-flagged as toxic.
-"""
-
 from __future__ import annotations
 
 import os

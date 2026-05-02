@@ -1,41 +1,3 @@
-"""XGBoost + group-aware threshold sweep using a composite score.
-
-Goal
-----
-Pick separate thresholds for AAE and SAE that balance:
-    - fairness: FPR gap between AAE and SAE
-    - performance: validation F1
-
-Composite score
----------------
-    score = lambda_fairness * FPR_gap + (1 - lambda_fairness) * (1 - F1)
-
-Lower score is better.
-
-This script:
-1. Loads train/val/test embeddings and CSVs.
-2. Trains one XGBoost model on embeddings.
-3. Sweeps multiple lambda_fairness values.
-4. For each lambda, searches thresholds (t_AAE, t_SAE) on validation data.
-5. Applies the selected thresholds to test data.
-6. Saves predictions for each lambda.
-7. Saves a summary metrics table.
-8. Produces two line plots:
-      - FPR metrics vs lambda
-      - FNR metrics vs lambda
-
-Expected CSV columns
---------------------
-- label
-- dialect_strict  (AAE or SAE)
-
-Notes
------
-- This is group-aware thresholding, so you must know dialect at prediction time.
-- The same trained XGBoost model is used for all lambda values.
-- Threshold search is done only on validation data.
-"""
-
 from __future__ import annotations
 
 import os
@@ -50,9 +12,6 @@ from sklearn.metrics import accuracy_score, f1_score
 from xgboost import XGBClassifier
 
 
-# =========================
-# CONFIG
-# =========================
 EMB_DIR = Path("../../data/embeddings")
 DATA_DIR = Path("../../data/processed/twitterAAE")
 RESULTS_DIR = Path("../../data/results/twitterAAE_experiments/xgb")
