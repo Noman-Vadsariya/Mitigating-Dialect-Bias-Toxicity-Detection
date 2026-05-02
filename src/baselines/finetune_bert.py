@@ -15,9 +15,13 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 # =========================
 # LOAD DATA
 # =========================
-train_df = pd.read_csv("../data/processed/train.csv")
-val_df = pd.read_csv("../data/processed/val.csv")
-test_df = pd.read_csv("../data/processed/test.csv")
+# train_df = pd.read_csv("../../data/processed/twitterAAE/train.csv")
+# val_df = pd.read_csv("../../data/processed/twitterAAE/val.csv")
+# test_df = pd.read_csv("../../data/processed/twitterAAE/test.csv")
+
+train_df = pd.read_csv("../../data/processed/twitterAAE/unbalanced/train.csv")
+val_df = pd.read_csv("../../data/processed/twitterAAE/unbalanced/val.csv")
+test_df = pd.read_csv("../../data/processed/twitterAAE/unbalanced/test.csv")
 
 # =========================
 # TOKENIZER
@@ -83,7 +87,7 @@ def compute_metrics(eval_pred):
 # TRAINING CONFIG (v5 compatible)
 # =========================
 training_args = TrainingArguments(
-    output_dir="./models/bert_finetuned",
+    output_dir="../../models/bert_finetuned",
     learning_rate=2e-5,
     per_device_train_batch_size=16,
     per_device_eval_batch_size=16,
@@ -128,10 +132,8 @@ probs = torch.softmax(torch.tensor(logits), dim=1)[:, 1].numpy()
 test_df["bert_prob"] = probs
 test_df["bert_pred"] = preds
 
-os.makedirs("../data/results", exist_ok=True)
-test_df.to_csv("../data/results/bert_finetuned_predictions.csv", index=False)
+test_df.to_csv("../../data/results/twitterAAE_baselines/bert_finetuned_predictions.csv", index=False)
 
-print("Saved predictions → results/bert_finetuned_predictions.csv")
 
 # =========================
 # FINAL METRICS
