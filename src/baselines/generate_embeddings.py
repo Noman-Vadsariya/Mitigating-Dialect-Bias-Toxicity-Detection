@@ -52,6 +52,10 @@ if __name__ == "__main__":
     # process_split("../data/processed/train.csv", "../data/embeddings/train_emb.npy")
     # process_split("../data/processed/val.csv", "../data/embeddings/val_emb.npy")
     # process_split("../data/processed/test.csv", "../data/embeddings/test_emb.npy")
-    process_split("../../data/processed/twitterAAE/unbalanced/train.csv", "../../data/embeddings/twitterAAE/unbalanced/train_emb.npy")
-    process_split("../../data/processed/twitterAAE/unbalanced/val.csv", "../../data/embeddings/twitterAAE/unbalanced/val_emb.npy")
-    process_split("../../data/processed/twitterAAE/unbalanced/test.csv", "../../data/embeddings/twitterAAE/unbalanced/test_emb.npy")  
+    # process_split("../../data/processed/twitterAAE/unbalanced/train.csv", "../../data/embeddings/twitterAAE/unbalanced/train_emb.npy")
+    # process_split("../../data/processed/twitterAAE/unbalanced/val.csv", "../../data/embeddings/twitterAAE/unbalanced/val_emb.npy")
+    # process_split("../../data/processed/twitterAAE/unbalanced/test.csv", "../../data/embeddings/twitterAAE/unbalanced/test_emb.npy")  
+
+    process_split("../../data/processed/twitterAAE/unbalanced_ternary/train.csv", "../../data/embeddings/twitterAAE/unbalanced_ternary/train_emb.npy")
+    process_split("../../data/processed/twitterAAE/unbalanced_ternary/val.csv", "../../data/embeddings/twitterAAE/unbalanced_ternary/val_emb.npy")
+    process_split("../../data/processed/twitterAAE/unbalanced_ternary/test.csv", "../../data/embeddings/twitterAAE/unbalanced_ternary/test_emb.npy")  
