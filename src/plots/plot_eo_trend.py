@@ -138,61 +138,78 @@ def plot_f1(rounds, f1, out_path, title):
 
 
 def main():
-    best_path = os.path.join(REPO_ROOT, "data", "results",
-                             "adv_xgb_eo_grid", "best_by_val_score.json")
-    with open(best_path) as f:
+    import argparse
+    p = argparse.ArgumentParser()
+    p.add_argument("--best_json", default=os.path.join(
+        REPO_ROOT, "data", "results", "adv_xgb_eo_grid", "best_by_val_score.json"))
+    p.add_argument("--train_csv", default=os.path.join(REPO_ROOT, "data", "processed", "train.csv"))
+    p.add_argument("--val_csv",   default=os.path.join(REPO_ROOT, "data", "processed", "val.csv"))
+    p.add_argument("--test_csv",  default=os.path.join(REPO_ROOT, "data", "processed", "test.csv"),
+                   help="Test set on which to track per-round metrics (in-domain or OOD)")
+    p.add_argument("--train_emb", default=os.path.join(REPO_ROOT, "data", "embeddings", "train_emb.npy"))
+    p.add_argument("--val_emb",   default=os.path.join(REPO_ROOT, "data", "embeddings", "val_emb.npy"))
+    p.add_argument("--test_emb",  default=os.path.join(REPO_ROOT, "data", "embeddings", "test_emb.npy"))
+    p.add_argument("--out_dir",   default=os.path.join(REPO_ROOT, "data", "results", "plots"))
+    p.add_argument("--prefix",    default="eo",
+                   help="Filename prefix, e.g. 'eo_unbalanced' or 'hatexplain_balanced'")
+    p.add_argument("--title_suffix", default="",
+                   help="Extra text appended to plot titles, e.g. 'on HateXplain'")
+    p.add_argument("--num_round", type=int, default=100)
+    p.add_argument("--warmup_rounds", type=int, default=5)
+    p.add_argument("--tree_method", default="hist")
+    p.add_argument("--device", default="cuda")
+    args = p.parse_args()
+
+    with open(args.best_json) as f:
         best = json.load(f)
     print(f"Best EO config: lambda_adv={best['lambda_adv']}, adv_c={best['adv_c']}, "
-          f"t_aae={best['t_aae']:.4f}, t_sae={best['t_sae']:.4f}")
+          f"t_aae={float(best['t_aae']):.4f}, t_sae={float(best['t_sae']):.4f}")
+    print(f"Train: {args.train_csv}\nTest:  {args.test_csv}")
 
-    tr_csv = os.path.join(REPO_ROOT, "data", "processed", "train.csv")
-    va_csv = os.path.join(REPO_ROOT, "data", "processed", "val.csv")
-    te_csv = os.path.join(REPO_ROOT, "data", "processed", "test.csv")
-    tr_emb = os.path.join(REPO_ROOT, "data", "embeddings", "train_emb.npy")
-    va_emb = os.path.join(REPO_ROOT, "data", "embeddings", "val_emb.npy")
-    te_emb = os.path.join(REPO_ROOT, "data", "embeddings", "test_emb.npy")
-
-    _, X_tr, y_tr, g_tr = load_split(tr_csv, tr_emb, "dialect_strict")
-    _, X_va, y_va, g_va = load_split(va_csv, va_emb, "dialect_strict")
-    _, X_te, y_te, g_te = load_split(te_csv, te_emb, "dialect_strict")
+    _, X_tr, y_tr, g_tr = load_split(args.train_csv, args.train_emb, "dialect_strict")
+    _, X_va, y_va, g_va = load_split(args.val_csv,   args.val_emb,   "dialect_strict")
+    _, X_te, y_te, g_te = load_split(args.test_csv,  args.test_emb,  "dialect_strict")
     print(f"Loaded train={len(y_tr)} val={len(y_va)} test={len(y_te)}")
 
     params = {
         "max_depth": 5, "eta": 0.08,
         "subsample": 0.9, "colsample_bytree": 0.9,
-        "tree_method": "hist", "seed": 42, "verbosity": 0,
+        "tree_method": args.tree_method, "device": args.device,
+        "seed": 42, "verbosity": 0,
     }
 
     print("Retraining best EO model while tracking per-round metrics...")
     hist = train_and_track(
         X_tr, y_tr, g_tr,
         X_te, y_te, g_te,
-        params=params, num_round=100,
+        params=params, num_round=args.num_round,
         lambda_adv=float(best["lambda_adv"]),
         adv_c=float(best["adv_c"]),
         t_aae=float(best["t_aae"]),
         t_sae=float(best["t_sae"]),
-        warmup_rounds=5,
+        warmup_rounds=args.warmup_rounds,
     )
 
-    out_dir = os.path.join(REPO_ROOT, "data", "results", "plots")
+    out_dir = args.out_dir
     os.makedirs(out_dir, exist_ok=True)
 
-    subtitle = (f"EO-adversarial XGBoost "
+    suffix = f" {args.title_suffix}" if args.title_suffix else ""
+    subtitle = (f"EO-adversarial XGBoost{suffix} "
                 f"(λ={best['lambda_adv']}, C={best['adv_c']}, "
-                f"t_AAE={best['t_aae']:.3f}, t_SAE={best['t_sae']:.3f})")
+                f"t_AAE={float(best['t_aae']):.3f}, t_SAE={float(best['t_sae']):.3f})")
 
+    pre = args.prefix
     plot_group_metric(hist["round"], hist["aae_fpr"], hist["sae_fpr"],
                       ylabel="FPR", title=f"Test FPR per round\n{subtitle}",
-                      out_path=os.path.join(out_dir, "eo_fpr_trend.png"))
+                      out_path=os.path.join(out_dir, f"{pre}_fpr_trend.png"))
     plot_group_metric(hist["round"], hist["aae_fnr"], hist["sae_fnr"],
                       ylabel="FNR", title=f"Test FNR per round\n{subtitle}",
-                      out_path=os.path.join(out_dir, "eo_fnr_trend.png"))
+                      out_path=os.path.join(out_dir, f"{pre}_fnr_trend.png"))
     plot_f1(hist["round"], hist["f1"],
-            out_path=os.path.join(out_dir, "eo_f1_trend.png"),
+            out_path=os.path.join(out_dir, f"{pre}_f1_trend.png"),
             title=f"Test F1 per round\n{subtitle}")
 
-    hist_path = os.path.join(out_dir, "eo_trend_history.json")
+    hist_path = os.path.join(out_dir, f"{pre}_trend_history.json")
     with open(hist_path, "w") as f:
         json.dump(hist, f, indent=2)
     print(f"  saved {hist_path}")

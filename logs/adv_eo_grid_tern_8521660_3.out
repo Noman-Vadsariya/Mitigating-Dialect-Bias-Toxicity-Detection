@@ -1,0 +1,42 @@
+==========================================
+SLURM_JOB_ID = 8521665
+SLURM_JOB_NODELIST = e22-11
+TMPDIR = /tmp/SLURM_8521665
+==========================================
+==============================================
+Array task: 3   Node: e22-11.hpc.usc.edu   Start: Sun May  3 14:54:57 PDT 2026
+==============================================
+Running lambda=0.1  adv_c=0.1,0.5,1.0,3.0,10.0  ratios=none,0.85,0.90,0.93,0.95,0.97,0.99 (ternary EO + projection)
+==============================================
+Train=17348 Val=3717 Test=3718  Tag=lam_0.1
+Class distribution train: [2914, 1001, 13433]
+Config: ternary EO adversary on softmax probs, projection=True, reweighting=FALSE, warmup=5
+Grid: 5 cells x 7 ratios = 35 rows
+  [ 1/5] lam=0.100 c=0.10 ratio= none  val_f1m=0.5365 val_FPRgap=0.1315  test_f1m=0.5472 test_FPRgap=0.1513
+  [ 1/5] lam=0.100 c=0.10 ratio= 0.85  val_f1m=0.5209 val_FPRgap=0.0349  test_f1m=0.5256 test_FPRgap=0.0149
+  [ 1/5] lam=0.100 c=0.10 ratio= 0.90  val_f1m=0.5209 val_FPRgap=0.0349  test_f1m=0.5256 test_FPRgap=0.0149
+  [ 1/5] lam=0.100 c=0.10 ratio= 0.93  val_f1m=0.5209 val_FPRgap=0.0349  test_f1m=0.5256 test_FPRgap=0.0149
+  [ 1/5] lam=0.100 c=0.10 ratio= 0.95  val_f1m=0.5209 val_FPRgap=0.0349  test_f1m=0.5256 test_FPRgap=0.0149
+  [ 1/5] lam=0.100 c=0.10 ratio= 0.97  val_f1m=0.5209 val_FPRgap=0.0349  test_f1m=0.5256 test_FPRgap=0.0149
+  [ 1/5] lam=0.100 c=0.10 ratio= 0.99  val_f1m=0.5324 val_FPRgap=0.0903  test_f1m=0.5444 test_FPRgap=0.0760
+  [ 2/5] lam=0.100 c=0.50 ratio= none  val_f1m=0.5391 val_FPRgap=0.1390  test_f1m=0.5468 test_FPRgap=0.1550
+  [ 2/5] lam=0.100 c=0.50 ratio= 0.85  val_f1m=0.4947 val_FPRgap=0.0174  test_f1m=0.5138 test_FPRgap=0.0299
+  [ 2/5] lam=0.100 c=0.50 ratio= 0.90  val_f1m=0.4947 val_FPRgap=0.0174  test_f1m=0.5138 test_FPRgap=0.0299
+  [ 2/5] lam=0.100 c=0.50 ratio= 0.93  val_f1m=0.5185 val_FPRgap=0.0417  test_f1m=0.5369 test_FPRgap=0.0558
+  [ 2/5] lam=0.100 c=0.50 ratio= 0.95  val_f1m=0.5185 val_FPRgap=0.0417  test_f1m=0.5369 test_FPRgap=0.0558
+  [ 2/5] lam=0.100 c=0.50 ratio= 0.97  val_f1m=0.5345 val_FPRgap=0.0734  test_f1m=0.5431 test_FPRgap=0.0515
+  [ 2/5] lam=0.100 c=0.50 ratio= 0.99  val_f1m=0.5345 val_FPRgap=0.0734  test_f1m=0.5431 test_FPRgap=0.0515
+  [ 3/5] lam=0.100 c=1.00 ratio= none  val_f1m=0.5260 val_FPRgap=0.1375  test_f1m=0.5473 test_FPRgap=0.1305
+  [ 3/5] lam=0.100 c=1.00 ratio= 0.85  val_f1m=0.5118 val_FPRgap=0.0400  test_f1m=0.5246 test_FPRgap=0.0127
+  [ 3/5] lam=0.100 c=1.00 ratio= 0.90  val_f1m=0.5118 val_FPRgap=0.0400  test_f1m=0.5246 test_FPRgap=0.0127
+  [ 3/5] lam=0.100 c=1.00 ratio= 0.93  val_f1m=0.5118 val_FPRgap=0.0400  test_f1m=0.5246 test_FPRgap=0.0127
+  [ 3/5] lam=0.100 c=1.00 ratio= 0.95  val_f1m=0.5118 val_FPRgap=0.0400  test_f1m=0.5246 test_FPRgap=0.0127
+  [ 3/5] lam=0.100 c=1.00 ratio= 0.97  val_f1m=0.5118 val_FPRgap=0.0400  test_f1m=0.5246 test_FPRgap=0.0127
+  [ 3/5] lam=0.100 c=1.00 ratio= 0.99  val_f1m=0.5228 val_FPRgap=0.0618  test_f1m=0.5418 test_FPRgap=0.0291
+  [ 4/5] lam=0.100 c=3.00 ratio= none  val_f1m=0.5317 val_FPRgap=0.1252  test_f1m=0.5347 test_FPRgap=0.1384
+  [ 4/5] lam=0.100 c=3.00 ratio= 0.85  val_f1m=0.5111 val_FPRgap=0.0592  test_f1m=0.5144 test_FPRgap=0.0391
+  [ 4/5] lam=0.100 c=3.00 ratio= 0.90  val_f1m=0.5111 val_FPRgap=0.0592  test_f1m=0.5144 test_FPRgap=0.0391
+  [ 4/5] lam=0.100 c=3.00 ratio= 0.93  val_f1m=0.5111 val_FPRgap=0.0592  test_f1m=0.5144 test_FPRgap=0.0391
+  [ 4/5] lam=0.100 c=3.00 ratio= 0.95  val_f1m=0.5111 val_FPRgap=0.0592  test_f1m=0.5144 test_FPRgap=0.0391
+  [ 4/5] lam=0.100 c=3.00 ratio= 0.97  val_f1m=0.5245 val_FPRgap=0.0602  test_f1m=0.5279 test_FPRgap=0.0403
+  [ 4/5] lam=0.100 c=3.00 ratio= 0.99  val_f1m=0.5468 val_FPRgap=0.0543  test_f1m=0.5523 test_FPRgap=0.0417

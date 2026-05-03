@@ -22,3 +22,74 @@ Loading splits...
   HateXplain label distribution: pos=8153 neg=8153
 
 Retraining best EO model on unbalanced TwitterAAE train...
+  trained in 36.3s
+
+=== In-domain (TwitterAAE unbalanced test) ===
+  accuracy: 0.8255
+  f1: 0.8292
+  AAE_FPR: 0.2222
+  AAE_FNR: 0.1290
+  AAE_TPR: 0.8710
+  AAE_acc: 0.8592
+  AAE_pos_rate: 0.7887
+  SAE_FPR: 0.1957
+  SAE_FNR: 0.1621
+  SAE_TPR: 0.8379
+  SAE_acc: 0.8185
+  SAE_pos_rate: 0.4672
+  FPR_gap: 0.0266
+  FNR_gap: 0.0331
+  TPR_gap: 0.0331
+  mean_FPR: 0.2089
+  mean_FNR: 0.1456
+  abs_balance: 0.0634
+  DIfav: 0.3965
+  DIunfav: 1.6883
+
+=== Out-of-domain (HateXplain test) ===
+  accuracy: 0.5550
+  f1: 0.5280
+  AAE_FPR: 0.8027
+  AAE_FNR: 0.1239
+  AAE_TPR: 0.8761
+  AAE_acc: 0.4981
+  AAE_pos_rate: 0.8352
+  SAE_FPR: 0.3722
+  SAE_FNR: 0.5134
+  SAE_TPR: 0.4866
+  SAE_acc: 0.5569
+  SAE_pos_rate: 0.4296
+  FPR_gap: 0.4305
+  FNR_gap: 0.3895
+  TPR_gap: 0.3895
+  mean_FPR: 0.5875
+  mean_FNR: 0.3187
+  abs_balance: 0.2688
+  DIfav: 0.2889
+  DIunfav: 1.9443
+
+=== HateXplain (default threshold 0.5/0.5) ===
+  accuracy: 0.5529
+  f1: 0.4938
+  AAE_FPR: 0.8571
+  AAE_FNR: 0.0897
+  AAE_TPR: 0.9103
+  AAE_acc: 0.4830
+  AAE_pos_rate: 0.8807
+  SAE_FPR: 0.3105
+  SAE_FNR: 0.5780
+  SAE_TPR: 0.4220
+  SAE_acc: 0.5553
+  SAE_pos_rate: 0.3665
+  FPR_gap: 0.5467
+  FNR_gap: 0.4882
+  TPR_gap: 0.4882
+  mean_FPR: 0.5838
+  mean_FNR: 0.3339
+  abs_balance: 0.2499
+  DIfav: 0.1883
+  DIunfav: 2.4032
+
+Saved: data/results/hatexplain_generalization/balanced/hatexplain_eval.json
+
+Completed at: Sun May  3 14:55:08 PDT 2026
