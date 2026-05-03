@@ -1,0 +1,148 @@
+================================================================
+SLIDE NOTES — Adversarial De-biasing + Threshold Tuning (3 slides)
+================================================================
+
+Shared config for all three slides:
+  Method: EO adversarial (Zhang 2018) + Zhang projection
+  Best config: lambda = 0.25, adv_c = 3.0, min_f1_ratio = 0.90
+  Threshold tuning: per-group (t_AAE, t_SAE) picked on val
+  The red circle on every plot marks the SAME single model.
+
+
+================================================================
+SLIDE 12 — Performance of Adversarial De-biasing (sweep over lambda)
+================================================================
+Suggested title: "Adversarial De-biasing — Sweep over lambda"
+
+Idea:
+  Train the classifier alongside an adversary that tries to predict
+  dialect from the model's outputs. A gradient-reversal term
+  (weight lambda) pushes the classifier to produce dialect-invariant
+  predictions, enforcing Equalized Odds (equal FPR AND FNR across
+  AAE / SAE) [Zhang et al., 2018].
+
+Key Takeaways:
+  - Low lambda (approx 0): model behaves like a vanilla baseline —
+    large FPR gap (~0.10) and FNR gap (~0.09), high FNR on AAE (~0.31).
+  - Moderate lambda (0.15 – 0.25): sweet spot. Both gaps collapse
+    while F1 holds at ~0.82.
+  - High lambda (0.6): training becomes unstable — FPR spikes to
+    0.63 on AAE, F1 dips. Classic symptom of the adversarial
+    minimax losing equilibrium.
+  - Very high lambda (1.0 – 1.5): gradient reversal dominates;
+    classifier collapses toward a degenerate near-uniform solution —
+    gaps go to ~0 but FNR rises.
+  - Fairness does NOT improve monotonically with lambda; we must
+    find the stable regime.
+
+Best Performance at lambda = 0.25 (adv_c = 3.0, thresh-tuned):
+  FPR (AAE): 0.185     FPR gap: 0.033
+  FNR (AAE): 0.161     FNR gap: 0.046
+  F1: 82.3             Accuracy: 82.6
+
+
+================================================================
+SLIDE 13 — Performance of Adversarial De-biasing (sweep over adv_c)
+================================================================
+Suggested title: "Adversarial De-biasing — Sweep over adv_c (adversary capacity)"
+
+Idea:
+  With lambda fixed at 0.25, we sweep the adversary's capacity
+  (adv_c = inverse-L2 regularization of the logistic-regression
+  adversary). Larger adv_c = stronger, more flexible adversary;
+  smaller adv_c = weaker adversary that is easier to "fool."
+
+Key Takeaways:
+  - Weak adversary (adv_c <= 0.5): adversary can't pressure the
+    classifier — F1 drops (0.77 at c=0.5) and training is noisy
+    because the gradient reversal points in a low-information
+    direction.
+  - Mid-capacity (adv_c = 1.0): worst cell — adversary is just
+    strong enough to destabilize training but not strong enough
+    to converge; AAE FPR explodes to 0.52.
+  - Strong adversary (adv_c = 3.0): equilibrium regime. Balanced
+    FPR (0.185 vs 0.152), F1 = 0.823, both gaps small.
+  - Very strong (adv_c = 10): capacity saturates; no further
+    improvement, curve plateaus.
+  - Unlike lambda, adv_c shows a non-monotonic / bathtub response —
+    a reminder that adversarial training is about finding
+    EQUILIBRIUM, not turning a knob higher.
+  - adv_c has a much SMALLER direct impact on overall score than
+    lambda: across our grid, adv_c alone explains only ~1% of the
+    variance in F1, vs ~54% for lambda. adv_c's role is less about
+    where we end up on the accuracy-fairness curve, and more about
+    whether a given lambda setting converges cleanly or diverges.
+
+Takeaway (replaces repeated "Best Performance" box from slide 12):
+  adv_c = 3.0 is the smallest capacity at which adversarial training
+  converges cleanly. Cells at c = 0.5 and c = 1.0 diverge (F1 < 0.81
+  or FPR spike) — the right adversary capacity is as important as
+  lambda. We use adv_c = 3.0 in all subsequent results.
+
+  (Best-numbers box intentionally omitted here — identical to
+   slide 12, repeating it would add no information.)
+
+
+================================================================
+SLIDE 14 — Impact of Threshold Tuning
+================================================================
+
+Idea:
+  After adversarial training, pick a different decision threshold
+  per group (t_AAE, t_SAE) on the validation set to minimize the
+  FPR gap under an F1 floor. This is a post-hoc, training-free
+  step equivalent to a per-group logit shift at inference — a
+  cheap equalized-odds post-processing layer on top of the
+  adversarial model [Hardt et al., 2016].
+
+Key Takeaways:
+  - FPR: huge win. AAE FPR halves (0.370 -> 0.185) and the FPR
+    gap collapses by 0.182 (0.215 -> 0.033). SAE is essentially
+    unchanged.
+  - FNR: a controlled trade-off. AAE FNR rises by 0.065 —
+    expected, because raising t_AAE converts some former false
+    positives into new false negatives. The FNR gap shrinks
+    (0.109 -> 0.046), so errors are now BALANCED across groups.
+  - F1 / Accuracy: virtually free. F1 drops only 0.008 and
+    accuracy 0.005.
+  - Adversarial training alone barely moves the per-group rates;
+    it reshapes the MARGIN DISTRIBUTION so the tuner has usable
+    slack. Together they are much stronger than either in
+    isolation.
+
+One-liner takeaway (optional):
+  Adversarial training aligns the score distributions; threshold
+  tuning translates that alignment into fair decisions — at ~1 pt
+  F1 cost.
+
+
+================================================================
+SMALL POLISH SUGGESTIONS FOR THE DECK
+================================================================
+  - Slides 12 and 13 currently share the title "Performance of
+    Adversarial De-biasing." Differentiate them (see suggested
+    titles above).
+  - Add a one-line config box in a corner of slide 12 so you
+    don't have to repeat it in speech:
+      Method: EO adversarial (Zhang 2018) - adv_c=3.0 -
+      min_f1_ratio=0.90 - threshold-tuned
+  - Mention verbally that the red-circled point on all three
+    slides is the SAME single model.
+
+
+================================================================
+CITATIONS TO ADD TO THE REFERENCES SLIDE
+================================================================
+Add both entries to your existing References slide (page 21):
+
+  Zhang, B. H., Lemoine, B., and Mitchell, M. 2018.
+    Mitigating Unwanted Biases with Adversarial Learning.
+    AAAI/ACM Conference on AI, Ethics, and Society (AIES).
+
+  Hardt, M., Price, E., and Srebro, N. 2016.
+    Equality of Opportunity in Supervised Learning. NeurIPS.
+
+In-deck inline citations:
+  - Slide 12 Idea line: "[Zhang et al., 2018]"
+  - Slide 13: no inline citation needed (same method)
+  - Slide 14 Idea line: "[Hardt et al., 2016]"

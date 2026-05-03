@@ -1,0 +1,39 @@
+==========================================
+SLURM_JOB_ID = 8153308
+SLURM_JOB_NODELIST = a03-01
+TMPDIR = /tmp/SLURM_8153308
+==========================================
+==============================================
+Array task: 10
+Node: a03-01.hpc.usc.edu
+Start time: Fri Apr 17 23:12:01 PDT 2026
+==============================================
+fairlearn 0.8.0 | xgboost 3.2.0
+Running: T3_T4   (--enable_3 --enable_4)
+==============================================
+Train: 5828 | Val: 1249 | Test: 1249
+Techniques: CEO=False | Platt=False | Reductions=True | ROC=True
+  [INFO] Technique 3: using group-reweighted XGB (fairlearn disabled).
+
+=== RESULTS ===
+  accuracy            : 0.7958
+  f1                  : 0.8096
+  AAE_FPR             : 0.3333
+  AAE_FNR             : 0.1183
+  AAE_TPR             : 0.8817
+  AAE_acc             : 0.8545
+  AAE_pos_rate        : 0.8122
+  SAE_FPR             : 0.2742
+  SAE_FNR             : 0.1370
+  SAE_TPR             : 0.8630
+  SAE_acc             : 0.7838
+  SAE_pos_rate        : 0.5232
+  FPR_gap             : 0.0591
+  FNR_gap             : 0.0187
+  TPR_gap             : 0.0187
+  DIfav               : 0.3938
+  DIunfav             : 1.5525
+
+Saved to: data/results/fairness_ablation/T3_T4_metrics.json
+
+Task T3_T4 completed at: Fri Apr 17 23:12:06 PDT 2026

@@ -1,0 +1,53 @@
+==========================================
+SLURM_JOB_ID = 8158629
+SLURM_JOB_NODELIST = b09-14
+TMPDIR = /tmp/SLURM_8158629
+==========================================
+==============================================
+Array task: 7   Node: b09-14.hpc.usc.edu   Start: Sat Apr 18 11:49:41 PDT 2026
+==============================================
+Running lambda=0.6  adv_c=0.1,0.5,1.0,3.0,10.0  ratios=none,0.85,0.90,0.93,0.95,0.97,0.99
+==============================================
+Train=5828 (AAE=993, SAE=4835) Val=1249 Test=1249
+Tag: lam_0.6
+Config: leaf_adv=True, reweighting=FALSE, threshold_tuning=PER-GROUP, post_processing=NONE
+Grid: 5 cells x 7 ratios = 35 rows  lambda=[0.6]  adv_c=[0.1, 0.5, 1.0, 3.0, 10.0]  ratios=[None, 0.85, 0.9, 0.93, 0.95, 0.97, 0.99]
+  [ 1/5] lam=0.600 c=0.10 ratio= none  t_aae=0.500 t_sae=0.500  val_f1=0.8562 val_FPR_gap=0.1133  test_f1=0.8223 test_FPR_gap=0.3276
+  [ 1/5] lam=0.600 c=0.10 ratio= 0.85  t_aae=0.410 t_sae=0.296  val_f1=0.8373 val_FPR_gap=0.0013  test_f1=0.8055 test_FPR_gap=0.2816
+  [ 1/5] lam=0.600 c=0.10 ratio= 0.90  t_aae=0.410 t_sae=0.296  val_f1=0.8373 val_FPR_gap=0.0013  test_f1=0.8055 test_FPR_gap=0.2816
+  [ 1/5] lam=0.600 c=0.10 ratio= 0.93  t_aae=0.410 t_sae=0.296  val_f1=0.8373 val_FPR_gap=0.0013  test_f1=0.8055 test_FPR_gap=0.2816
+  [ 1/5] lam=0.600 c=0.10 ratio= 0.95  t_aae=0.410 t_sae=0.296  val_f1=0.8373 val_FPR_gap=0.0013  test_f1=0.8055 test_FPR_gap=0.2816
+  [ 1/5] lam=0.600 c=0.10 ratio= 0.97  t_aae=0.410 t_sae=0.296  val_f1=0.8373 val_FPR_gap=0.0013  test_f1=0.8055 test_FPR_gap=0.2816
+  [ 1/5] lam=0.600 c=0.10 ratio= 0.99  t_aae=0.655 t_sae=0.427  val_f1=0.8496 val_FPR_gap=0.0041  test_f1=0.8201 test_FPR_gap=0.0973
+  [ 2/5] lam=0.600 c=0.50 ratio= none  t_aae=0.500 t_sae=0.500  val_f1=0.8503 val_FPR_gap=0.1083  test_f1=0.8233 test_FPR_gap=0.2552
+  [ 2/5] lam=0.600 c=0.50 ratio= 0.85  t_aae=0.786 t_sae=0.606  val_f1=0.8166 val_FPR_gap=0.0004  test_f1=0.8052 test_FPR_gap=0.0395
+  [ 2/5] lam=0.600 c=0.50 ratio= 0.90  t_aae=0.786 t_sae=0.606  val_f1=0.8166 val_FPR_gap=0.0004  test_f1=0.8052 test_FPR_gap=0.0395
+  [ 2/5] lam=0.600 c=0.50 ratio= 0.93  t_aae=0.786 t_sae=0.606  val_f1=0.8166 val_FPR_gap=0.0004  test_f1=0.8052 test_FPR_gap=0.0395
+  [ 2/5] lam=0.600 c=0.50 ratio= 0.95  t_aae=0.786 t_sae=0.606  val_f1=0.8166 val_FPR_gap=0.0004  test_f1=0.8052 test_FPR_gap=0.0395
+  [ 2/5] lam=0.600 c=0.50 ratio= 0.97  t_aae=0.720 t_sae=0.508  val_f1=0.8363 val_FPR_gap=0.0022  test_f1=0.8149 test_FPR_gap=0.0380
+  [ 2/5] lam=0.600 c=0.50 ratio= 0.99  t_aae=0.573 t_sae=0.378  val_f1=0.8451 val_FPR_gap=0.0043  test_f1=0.8220 test_FPR_gap=0.1026
+  [ 3/5] lam=0.600 c=1.00 ratio= none  t_aae=0.500 t_sae=0.500  val_f1=0.8486 val_FPR_gap=0.0426  test_f1=0.8412 test_FPR_gap=0.1962
+  [ 3/5] lam=0.600 c=1.00 ratio= 0.85  t_aae=0.867 t_sae=0.557  val_f1=0.8029 val_FPR_gap=0.0004  test_f1=0.8024 test_FPR_gap=0.0683
+  [ 3/5] lam=0.600 c=1.00 ratio= 0.90  t_aae=0.867 t_sae=0.557  val_f1=0.8029 val_FPR_gap=0.0004  test_f1=0.8024 test_FPR_gap=0.0683
+  [ 3/5] lam=0.600 c=1.00 ratio= 0.93  t_aae=0.867 t_sae=0.557  val_f1=0.8029 val_FPR_gap=0.0004  test_f1=0.8024 test_FPR_gap=0.0683
+  [ 3/5] lam=0.600 c=1.00 ratio= 0.95  t_aae=0.378 t_sae=0.329  val_f1=0.8459 val_FPR_gap=0.0006  test_f1=0.8178 test_FPR_gap=0.2897
+  [ 3/5] lam=0.600 c=1.00 ratio= 0.97  t_aae=0.378 t_sae=0.329  val_f1=0.8459 val_FPR_gap=0.0006  test_f1=0.8178 test_FPR_gap=0.2897
+  [ 3/5] lam=0.600 c=1.00 ratio= 0.99  t_aae=0.378 t_sae=0.329  val_f1=0.8459 val_FPR_gap=0.0006  test_f1=0.8178 test_FPR_gap=0.2897
+  [ 4/5] lam=0.600 c=3.00 ratio= none  t_aae=0.500 t_sae=0.500  val_f1=0.8366 val_FPR_gap=0.0596  test_f1=0.8227 test_FPR_gap=0.3310
+  [ 4/5] lam=0.600 c=3.00 ratio= 0.85  t_aae=0.296 t_sae=0.214  val_f1=0.8086 val_FPR_gap=0.0002  test_f1=0.8003 test_FPR_gap=0.3174
+  [ 4/5] lam=0.600 c=3.00 ratio= 0.90  t_aae=0.296 t_sae=0.214  val_f1=0.8086 val_FPR_gap=0.0002  test_f1=0.8003 test_FPR_gap=0.3174
+  [ 4/5] lam=0.600 c=3.00 ratio= 0.93  t_aae=0.296 t_sae=0.214  val_f1=0.8086 val_FPR_gap=0.0002  test_f1=0.8003 test_FPR_gap=0.3174
+  [ 4/5] lam=0.600 c=3.00 ratio= 0.95  t_aae=0.296 t_sae=0.214  val_f1=0.8086 val_FPR_gap=0.0002  test_f1=0.8003 test_FPR_gap=0.3174
+  [ 4/5] lam=0.600 c=3.00 ratio= 0.97  t_aae=0.492 t_sae=0.378  val_f1=0.8474 val_FPR_gap=0.0009  test_f1=0.8153 test_FPR_gap=0.2490
+  [ 4/5] lam=0.600 c=3.00 ratio= 0.99  t_aae=0.492 t_sae=0.378  val_f1=0.8474 val_FPR_gap=0.0009  test_f1=0.8153 test_FPR_gap=0.2490
+  [ 5/5] lam=0.600 c=10.00 ratio= none  t_aae=0.500 t_sae=0.500  val_f1=0.8492 val_FPR_gap=0.0259  test_f1=0.8251 test_FPR_gap=0.4555
+  [ 5/5] lam=0.600 c=10.00 ratio= 0.85  t_aae=0.149 t_sae=0.116  val_f1=0.7693 val_FPR_gap=0.0011  test_f1=0.7652 test_FPR_gap=0.2463
+  [ 5/5] lam=0.600 c=10.00 ratio= 0.90  t_aae=0.149 t_sae=0.116  val_f1=0.7693 val_FPR_gap=0.0011  test_f1=0.7652 test_FPR_gap=0.2463
+  [ 5/5] lam=0.600 c=10.00 ratio= 0.93  t_aae=0.263 t_sae=0.182  val_f1=0.8063 val_FPR_gap=0.0020  test_f1=0.7920 test_FPR_gap=0.2202
+  [ 5/5] lam=0.600 c=10.00 ratio= 0.95  t_aae=0.394 t_sae=0.329  val_f1=0.8453 val_FPR_gap=0.0022  test_f1=0.8119 test_FPR_gap=0.3604
+  [ 5/5] lam=0.600 c=10.00 ratio= 0.97  t_aae=0.394 t_sae=0.329  val_f1=0.8453 val_FPR_gap=0.0022  test_f1=0.8119 test_FPR_gap=0.3604
+  [ 5/5] lam=0.600 c=10.00 ratio= 0.99  t_aae=0.394 t_sae=0.329  val_f1=0.8453 val_FPR_gap=0.0022  test_f1=0.8119 test_FPR_gap=0.3604
+
+Saved: data/results/adv_xgb_thresh_grid/lam_0.6_grid.csv  (35 rows)
+
+Task lam_0.6 completed at: Sat Apr 18 12:08:36 PDT 2026

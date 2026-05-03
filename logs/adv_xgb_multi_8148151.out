@@ -1,0 +1,29 @@
+==========================================
+SLURM_JOB_ID = 8148151
+SLURM_JOB_NODELIST = a04-09
+TMPDIR = /tmp/SLURM_8148151
+==========================================
+==============================================
+Adversarial XGBoost with Multi-Technique Debiasing
+==============================================
+Job ID: 8148151
+Node: a04-09.hpc.usc.edu
+Start time: Fri Apr 17 18:36:46 PDT 2026
+==============================================
+Python: /scratch1/aqliang/haluguard-env/bin/python
+==============================================
+
+============================================================
+Adversarial XGBoost with Multi-Technique Debiasing
+============================================================
+  Leaf-based adversary:   True
+  Sample reweighting:     True
+  Threshold tuning:       True
+============================================================
+
+Train: 5828 samples (AAE: 993, SAE: 4835)
+Val:   1249 samples (AAE: 213, SAE: 1036)
+Test:  1249 samples (AAE: 213, SAE: 1036)
+
+Starting adversarial tuning...
+

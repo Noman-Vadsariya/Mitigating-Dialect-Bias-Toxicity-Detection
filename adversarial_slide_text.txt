@@ -1,0 +1,66 @@
+================================================================
+SLIDE TEXT — Adversarial De-biasing + Threshold Tuning
+Concise bullet version (to paste into slides)
+================================================================
+
+
+================================================================
+SLIDE 12 — Adversarial De-biasing: Sweep over lambda
+================================================================
+
+Idea:
+  Train classifier against an adversary that predicts dialect
+  from the output. Lambda weights the gradient-reversal term,
+  enforcing Equalized Odds [Zhang et al., 2018].
+
+Key Takeaways:
+  - Small lambda -> near-baseline: large FPR/FNR gaps.
+  - Moderate lambda (0.15-0.25): both gaps collapse, F1 ~ 0.82.
+  - Large lambda (>= 0.6): unstable - FPR spikes, F1 drops.
+  - Fairness does NOT improve monotonically with lambda.
+
+Best (lambda=0.25, adv_c=3.0, thresh-tuned):
+  FPR_AAE 0.185 | FPR gap 0.033
+  FNR_AAE 0.161 | FNR gap 0.046
+  F1 82.3       | Acc 82.6
+
+
+================================================================
+SLIDE 13 — Adversarial De-biasing: Sweep over adv_c
+================================================================
+
+Idea:
+  Fix lambda = 0.25; vary the adversary's capacity (adv_c =
+  inverse-L2 of the LR adversary).
+
+Key Takeaways:
+  - Weak (<= 0.5): noisy, F1 drops.
+  - Mid (c=1.0): worst cell - AAE FPR spikes to 0.52.
+  - Strong (c=3.0): equilibrium; balanced FPR, stable F1.
+  - adv_c shows a non-monotonic / bathtub response.
+  - adv_c explains only ~1% of F1 variance (vs lambda's ~54%):
+    it controls STABILITY, not the accuracy-fairness trade-off.
+
+Takeaway:
+  c = 3.0 is the smallest capacity that converges cleanly.
+  Used in all subsequent results.
+
+
+================================================================
+SLIDE 14 — Impact of Threshold Tuning
+================================================================
+
+Idea:
+  Post-hoc: pick per-group thresholds (t_AAE, t_SAE) on val to
+  minimize FPR gap under an F1 floor [Hardt et al., 2016].
+
+Key Takeaways:
+  - FPR: AAE halves (0.370 -> 0.185); gap drops 0.215 -> 0.033.
+  - FNR: AAE rises (+0.065); gap shrinks 0.109 -> 0.046 (balanced).
+  - F1 cost: only -0.008.
+  - Adversarial training aligns score distributions; threshold
+    tuning converts that alignment into fair decisions.
+
+One-liner:
+  Aligned scores (adversarial) + fair decisions (threshold tuning)
+  = balanced errors at ~1pt F1 cost.

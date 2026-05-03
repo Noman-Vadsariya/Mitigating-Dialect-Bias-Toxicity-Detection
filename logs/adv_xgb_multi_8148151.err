@@ -1,0 +1,35 @@
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+conda/25.11.0:
+   NOTE: We now recommend using micromamba instead to install and manage
+   Conda environments. See the installation guide here: https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html#automatic-install
+   In Slurm job scripts, micromamba can be enabled with the following: eval
+   "$(micromamba shell hook --shell bash)" If you have any questions,
+   contact carc-support@usc.edu.
+
+-------------------------------------------------------------------------------Traceback (most recent call last):
+  File "/scratch1/aqliang/CSCI567-ML-Project/src/experiments/train_adv_xgb.py", line 715, in <module>
+    main()
+  File "/scratch1/aqliang/CSCI567-ML-Project/src/experiments/train_adv_xgb.py", line 547, in main
+    booster, history = train_one_adv_model(
+  File "/scratch1/aqliang/CSCI567-ML-Project/src/experiments/train_adv_xgb.py", line 392, in train_one_adv_model
+    leaf_adv_clf, leaf_sparse = fit_leaf_adversary(
+  File "/scratch1/aqliang/CSCI567-ML-Project/src/experiments/train_adv_xgb.py", line 143, in fit_leaf_adversary
+    clf.fit(leaf_sparse, g_train, sample_weight=sample_weight)
+  File "/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py", line 1247, in fit
+    X, y = validate_data(
+  File "/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/sklearn/utils/validation.py", line 2971, in validate_data
+    X, y = check_X_y(X, y, **check_params)
+  File "/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/sklearn/utils/validation.py", line 1368, in check_X_y
+    X = check_array(
+  File "/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/sklearn/utils/validation.py", line 1012, in check_array
+    array = _ensure_sparse_format(
+  File "/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/sklearn/utils/validation.py", line 607, in _ensure_sparse_format
+    _check_large_sparse(sparse_container, accept_large_sparse)
+  File "/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/sklearn/utils/validation.py", line 1192, in _check_large_sparse
+    raise ValueError(
+ValueError: Only sparse matrices with 32-bit integer indices are accepted. Got int64 indices. Please do report a minimal reproducer on scikit-learn issue tracker so that support for your use-case can be studied by maintainers. See: https://scikit-learn.org/dev/developers/minimal_reproducer.html

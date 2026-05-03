@@ -1,0 +1,44 @@
+==========================================
+SLURM_JOB_ID = 8153695
+SLURM_JOB_NODELIST = e22-10
+TMPDIR = /tmp/SLURM_8153695
+==========================================
+==============================================
+Array task: 15
+Node: e22-10.hpc.usc.edu
+Start time: Sat Apr 18 02:18:32 PDT 2026
+==============================================
+fairlearn 0.8.0 | xgboost 3.2.0
+Running: T1_T2_T3_T4   (--enable_all)
+==============================================
+Train: 5828 (AAE=993, SAE=4835)
+Val:   1249 | Test: 1249
+Tag: T1_T2_T3_T4
+Techniques: CEO=True Platt=True Reductions=True ROC=True
+Grid size: 15 cells (lambda=[0.0, 0.05, 0.1, 0.25, 0.5], adv_c=[0.5, 1.0, 2.0])
+  [ 1/15] lam=0.000 adv_c=0.50 val_f1=0.8407 val_FPR=0.1478 val_score=-0.1753  (560.4s)
+  [ 2/15] lam=0.000 adv_c=1.00 val_f1=0.8407 val_FPR=0.1478 val_score=-0.1753  (567.7s)
+  [ 3/15] lam=0.000 adv_c=2.00 val_f1=0.8407 val_FPR=0.1478 val_score=-0.1753  (582.8s)
+  [ 4/15] lam=0.050 adv_c=0.50 val_f1=0.8352 val_FPR=0.1453 val_score=-0.1593  (574.8s)
+  [ 5/15] lam=0.050 adv_c=1.00 val_f1=0.8438 val_FPR=0.1578 val_score=-0.1628  (583.6s)
+  [ 6/15] lam=0.050 adv_c=2.00 val_f1=0.8357 val_FPR=0.1436 val_score=-0.1533  (583.4s)
+  [ 7/15] lam=0.100 adv_c=0.50 val_f1=0.8378 val_FPR=0.1595 val_score=-0.1594  (573.6s)
+  [ 8/15] lam=0.100 adv_c=1.00 val_f1=0.8369 val_FPR=0.1386 val_score=-0.1482  (585.1s)
+  [ 9/15] lam=0.100 adv_c=2.00 val_f1=0.8419 val_FPR=0.1394 val_score=-0.1626  (578.2s)
+  [10/15] lam=0.250 adv_c=0.50 val_f1=0.8405 val_FPR=0.1200 val_score=-0.1645  (547.6s)
+  [11/15] lam=0.250 adv_c=1.00 val_f1=0.8324 val_FPR=0.1276 val_score=-0.1424  (586.5s)
+  [12/15] lam=0.250 adv_c=2.00 val_f1=0.8467 val_FPR=0.1428 val_score=-0.1757  (590.7s)
+  [13/15] lam=0.500 adv_c=0.50 val_f1=0.8344 val_FPR=0.1486 val_score=-0.1543  (567.6s)
+  [14/15] lam=0.500 adv_c=1.00 val_f1=0.8364 val_FPR=0.1520 val_score=-0.1653  (581.8s)
+  [15/15] lam=0.500 adv_c=2.00 val_f1=0.8445 val_FPR=0.1478 val_score=-0.1771  (593.5s)
+
+=== BEST CELL FOR TAG=T1_T2_T3_T4 ===
+  lambda_adv=0.5  adv_c=2.0
+  val_score=-0.1771  F1=0.8101
+  test FPR (AAE/SAE)=0.2222/0.2040  FNR (AAE/SAE)=0.1720/0.1826
+  test mean_FPR=0.2131 mean_FNR=0.1773
+  FPR_gap=0.0182  FNR_gap=0.0106
+
+Saved to: data/results/fairness_ablation/T1_T2_T3_T4_metrics.json  (elapsed 144.3 min)
+
+Task T1_T2_T3_T4 completed at: Sat Apr 18 04:42:55 PDT 2026
