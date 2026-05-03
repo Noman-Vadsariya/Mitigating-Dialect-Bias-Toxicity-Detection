@@ -1,0 +1,24 @@
+==========================================
+SLURM_JOB_ID = 8521577
+SLURM_JOB_NODELIST = e22-16
+TMPDIR = /tmp/SLURM_8521577
+==========================================
+==============================================
+Node: e22-16.hpc.usc.edu   Start: Sun May  3 14:54:28 PDT 2026
+==============================================
+DATA_TAG=unbalanced
+Best config: data/results/adv_xgb_eo_grid_unbalanced/best_by_val_score.json
+Train data:  data/processed/twitterAAE/unbalanced / data/embeddings/twitterAAE/unbalanced
+Output dir:  data/results/hatexplain_generalization/unbalanced
+==============================================
+Best EO config from data/results/adv_xgb_eo_grid_unbalanced/best_by_val_score.json:
+  lambda_adv=1.5  adv_c=0.5  min_f1_ratio=0.85
+  thresholds: t_AAE=0.9000  t_SAE=0.8184
+
+Loading splits...
+  Train=17348  Val=3717
+  TwitterAAE test=3718  HateXplain test=16306
+  HateXplain group counts: AAE=528 SAE=15778
+  HateXplain label distribution: pos=8153 neg=8153
+
+Retraining best EO model on unbalanced TwitterAAE train...

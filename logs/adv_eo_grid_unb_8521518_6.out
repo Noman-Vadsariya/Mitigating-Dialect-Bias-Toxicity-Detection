@@ -1,0 +1,52 @@
+==========================================
+SLURM_JOB_ID = 8521526
+SLURM_JOB_NODELIST = e21-16
+TMPDIR = /tmp/SLURM_8521526
+==========================================
+==============================================
+Array task: 6   Node: e21-16.hpc.usc.edu   Start: Sun May  3 14:41:42 PDT 2026
+==============================================
+Running lambda=0.4  adv_c=0.1,0.5,1.0,3.0,10.0  ratios=none,0.85,0.90,0.93,0.95,0.97,0.99 (EO + projection, unbalanced TwitterAAE)
+==============================================
+Train=17348 Val=3717 Test=3718  Tag=lam_0.4
+Config: EO adversary on margin, projection=True, reweighting=FALSE, warmup=5
+Grid: 5 cells x 7 ratios = 35 rows
+  [ 1/5] lam=0.400 c=0.10 ratio= none  t=(0.50,0.50)  val_f1=0.9349 val_gap=0.3864  test_f1=0.9341 test_gap=0.2360
+  [ 1/5] lam=0.400 c=0.10 ratio= 0.85  t=(0.88,0.75)  val_f1=0.9108 val_gap=0.0004  test_f1=0.9060 test_gap=0.0621
+  [ 1/5] lam=0.400 c=0.10 ratio= 0.90  t=(0.88,0.75)  val_f1=0.9108 val_gap=0.0004  test_f1=0.9060 test_gap=0.0621
+  [ 1/5] lam=0.400 c=0.10 ratio= 0.93  t=(0.88,0.75)  val_f1=0.9108 val_gap=0.0004  test_f1=0.9060 test_gap=0.0621
+  [ 1/5] lam=0.400 c=0.10 ratio= 0.95  t=(0.88,0.75)  val_f1=0.9108 val_gap=0.0004  test_f1=0.9060 test_gap=0.0621
+  [ 1/5] lam=0.400 c=0.10 ratio= 0.97  t=(0.88,0.75)  val_f1=0.9108 val_gap=0.0004  test_f1=0.9060 test_gap=0.0621
+  [ 1/5] lam=0.400 c=0.10 ratio= 0.99  t=(0.82,0.52)  val_f1=0.9288 val_gap=0.0007  test_f1=0.9265 test_gap=0.0656
+  [ 2/5] lam=0.400 c=0.50 ratio= none  t=(0.50,0.50)  val_f1=0.9348 val_gap=0.3797  test_f1=0.9343 test_gap=0.2510
+  [ 2/5] lam=0.400 c=0.50 ratio= 0.85  t=(0.70,0.38)  val_f1=0.9289 val_gap=0.0002  test_f1=0.9269 test_gap=0.0242
+  [ 2/5] lam=0.400 c=0.50 ratio= 0.90  t=(0.70,0.38)  val_f1=0.9289 val_gap=0.0002  test_f1=0.9269 test_gap=0.0242
+  [ 2/5] lam=0.400 c=0.50 ratio= 0.93  t=(0.70,0.38)  val_f1=0.9289 val_gap=0.0002  test_f1=0.9269 test_gap=0.0242
+  [ 2/5] lam=0.400 c=0.50 ratio= 0.95  t=(0.70,0.38)  val_f1=0.9289 val_gap=0.0002  test_f1=0.9269 test_gap=0.0242
+  [ 2/5] lam=0.400 c=0.50 ratio= 0.97  t=(0.70,0.38)  val_f1=0.9289 val_gap=0.0002  test_f1=0.9269 test_gap=0.0242
+  [ 2/5] lam=0.400 c=0.50 ratio= 0.99  t=(0.70,0.38)  val_f1=0.9289 val_gap=0.0002  test_f1=0.9269 test_gap=0.0242
+  [ 3/5] lam=0.400 c=1.00 ratio= none  t=(0.50,0.50)  val_f1=0.9320 val_gap=0.4150  test_f1=0.9337 test_gap=0.2544
+  [ 3/5] lam=0.400 c=1.00 ratio= 0.85  t=(0.79,0.49)  val_f1=0.9288 val_gap=0.0007  test_f1=0.9276 test_gap=0.0166
+  [ 3/5] lam=0.400 c=1.00 ratio= 0.90  t=(0.79,0.49)  val_f1=0.9288 val_gap=0.0007  test_f1=0.9276 test_gap=0.0166
+  [ 3/5] lam=0.400 c=1.00 ratio= 0.93  t=(0.79,0.49)  val_f1=0.9288 val_gap=0.0007  test_f1=0.9276 test_gap=0.0166
+  [ 3/5] lam=0.400 c=1.00 ratio= 0.95  t=(0.79,0.49)  val_f1=0.9288 val_gap=0.0007  test_f1=0.9276 test_gap=0.0166
+  [ 3/5] lam=0.400 c=1.00 ratio= 0.97  t=(0.79,0.49)  val_f1=0.9288 val_gap=0.0007  test_f1=0.9276 test_gap=0.0166
+  [ 3/5] lam=0.400 c=1.00 ratio= 0.99  t=(0.79,0.49)  val_f1=0.9288 val_gap=0.0007  test_f1=0.9276 test_gap=0.0166
+  [ 4/5] lam=0.400 c=3.00 ratio= none  t=(0.50,0.50)  val_f1=0.9332 val_gap=0.3343  test_f1=0.9346 test_gap=0.2510
+  [ 4/5] lam=0.400 c=3.00 ratio= 0.85  t=(0.44,0.10)  val_f1=0.9161 val_gap=0.0006  test_f1=0.9135 test_gap=0.1470
+  [ 4/5] lam=0.400 c=3.00 ratio= 0.90  t=(0.44,0.10)  val_f1=0.9161 val_gap=0.0006  test_f1=0.9135 test_gap=0.1470
+  [ 4/5] lam=0.400 c=3.00 ratio= 0.93  t=(0.44,0.10)  val_f1=0.9161 val_gap=0.0006  test_f1=0.9135 test_gap=0.1470
+  [ 4/5] lam=0.400 c=3.00 ratio= 0.95  t=(0.44,0.10)  val_f1=0.9161 val_gap=0.0006  test_f1=0.9135 test_gap=0.1470
+  [ 4/5] lam=0.400 c=3.00 ratio= 0.97  t=(0.44,0.10)  val_f1=0.9161 val_gap=0.0006  test_f1=0.9135 test_gap=0.1470
+  [ 4/5] lam=0.400 c=3.00 ratio= 0.99  t=(0.66,0.39)  val_f1=0.9275 val_gap=0.0015  test_f1=0.9290 test_gap=0.1036
+  [ 5/5] lam=0.400 c=10.00 ratio= none  t=(0.50,0.50)  val_f1=0.9329 val_gap=0.3797  test_f1=0.9328 test_gap=0.2090
+  [ 5/5] lam=0.400 c=10.00 ratio= 0.85  t=(0.59,0.23)  val_f1=0.9228 val_gap=0.0006  test_f1=0.9231 test_gap=0.1176
+  [ 5/5] lam=0.400 c=10.00 ratio= 0.90  t=(0.59,0.23)  val_f1=0.9228 val_gap=0.0006  test_f1=0.9231 test_gap=0.1176
+  [ 5/5] lam=0.400 c=10.00 ratio= 0.93  t=(0.59,0.23)  val_f1=0.9228 val_gap=0.0006  test_f1=0.9231 test_gap=0.1176
+  [ 5/5] lam=0.400 c=10.00 ratio= 0.95  t=(0.59,0.23)  val_f1=0.9228 val_gap=0.0006  test_f1=0.9231 test_gap=0.1176
+  [ 5/5] lam=0.400 c=10.00 ratio= 0.97  t=(0.59,0.23)  val_f1=0.9228 val_gap=0.0006  test_f1=0.9231 test_gap=0.1176
+  [ 5/5] lam=0.400 c=10.00 ratio= 0.99  t=(0.80,0.61)  val_f1=0.9288 val_gap=0.0020  test_f1=0.9271 test_gap=0.0224
+
+Saved: data/results/adv_xgb_eo_grid_unbalanced/lam_0.4_grid.csv  (35 rows)
+
+Task lam_0.4 completed at: Sun May  3 14:50:10 PDT 2026

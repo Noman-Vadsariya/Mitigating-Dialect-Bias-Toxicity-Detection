@@ -1,0 +1,12 @@
+==========================================
+SLURM_JOB_ID = 8521519
+SLURM_JOB_NODELIST = d11-03
+TMPDIR = /tmp/SLURM_8521519
+==========================================
+==============================================
+Node: d11-03.hpc.usc.edu   Start: Sun May  3 14:41:42 PDT 2026
+==============================================
+Loaded 16306 rows from data/processed/hatexplain/test.csv
+Embeddings shape: (16306, 768)
+Saved: data/embeddings/hatexplain/test_emb.npy
+Completed at: Sun May  3 14:54:11 PDT 2026
