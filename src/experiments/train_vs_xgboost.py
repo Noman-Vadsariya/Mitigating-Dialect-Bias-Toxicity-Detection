@@ -279,7 +279,7 @@ def save_outputs(out_dir, model, results_df, best_params, test_output_df, test_m
     summary_json_path = os.path.join(out_dir, "vs_xgb_summary.json")
     preds_path = os.path.join(out_dir, "vs_xgb_predictions.csv")
 
-    summary_txt_path = "data/results/vs_xgb_train_time/vs_xgb_summary.txt"
+    summary_txt_path = os.path.join(out_dir, "vs_xgb_summary.txt")
 
     joblib.dump(model, model_path)
     results_df.to_csv(candidates_path, index=False)

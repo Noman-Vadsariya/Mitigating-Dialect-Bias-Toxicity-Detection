@@ -1,0 +1,18 @@
+===== XGBoost Ternary =====
+Accuracy: 0.8370
+Macro F1: 0.5693
+Confusion Matrix:
+[[ 402    8  215]
+ [  44   20  150]
+ [ 170   19 2690]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.65      0.64      0.65       625
+           1       0.43      0.09      0.15       214
+           2       0.88      0.93      0.91      2879
+
+    accuracy                           0.84      3718
+   macro avg       0.65      0.56      0.57      3718
+weighted avg       0.82      0.84      0.82      3718

@@ -1,0 +1,33 @@
+===== VS-XGBoost with Uncertainty Band =====
+Uncertainty band: low=0.35, high=0.65
+
+Binary VS metrics on all examples:
+Accuracy: 0.8733
+F1: 0.9261
+FPR AAE: 0.4815
+FPR SAE: 0.5301
+FPR Gap: 0.0486
+FNR AAE: 0.0541
+FNR SAE: 0.0420
+FNR Gap: 0.0121
+DIfav: 0.4999
+DIunfav: 1.0777
+
+Ternary prediction counts:
+0 (non-toxic): 283
+1 (unsure): 410
+2 (toxic): 3025
+
+Confident-subset binary metrics:
+accuracy: 0.9132
+f1: 0.9513
+FPR_AAE: 0.4375
+FPR_SAE: 0.5070
+FPR_gap: 0.0695
+FNR_AAE: 0.0275
+FNR_SAE: 0.0202
+FNR_gap: 0.0073
+DIfav: 0.3675
+DIunfav: 1.0720
+coverage: 0.8897
+unsure_rate: 0.1103
