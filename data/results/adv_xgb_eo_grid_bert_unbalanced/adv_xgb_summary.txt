@@ -1,0 +1,27 @@
+Adversarial XGBoost (EO) Summary  --  BERT-MLP adversary
+Dataset: TwitterAAE unbalanced
+================================================================
+
+Best candidate (selected by val_score):
+  lambda_adv = 0.025
+  adv_hidden = 256.0    adv_lr = 0.0003
+  min_f1_ratio = 0.93
+  thresholds = (t_AAE=0.9000, t_SAE=0.7204)
+
+--- Val ---
+Val Accuracy: 0.8652
+Val F1:       0.9166
+AAE FPR: 0.2593   SAE FPR: 0.2580   FPR Gap: 0.0013
+AAE FNR: 0.1059   SAE FNR: 0.1116   FNR Gap: 0.0057
+Mean FPR: 0.2586   Mean FNR: 0.1088   |EO balance|: 0.1498
+
+--- Test ---
+Test Accuracy: 0.8518
+Test F1:       0.9085
+AAE FPR: 0.2963   SAE FPR: 0.3110   FPR Gap: 0.0147
+AAE FNR: 0.1330   SAE FNR: 0.1079   FNR Gap: 0.0250
+Mean FPR: 0.3037   Mean FNR: 0.1205   |EO balance|: 0.1832
+
+--- Oracle best (selected by test_score, for reference) ---
+  lambda_adv=0.025 hidden=256.0 lr=0.0003 ratio=0.9
+  Test F1: 0.9085  FPR Gap: 0.0147  Mean FPR: 0.3037

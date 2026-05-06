@@ -1,0 +1,36 @@
+Adversarial XGBoost (EO) Summary  --  Unbalanced TwitterAAE
+==========================================================
+
+Best candidate (selected by val_score):
+  lambda_adv = 1.5
+  adv_c      = 0.5
+  min_f1_ratio = 0.85
+  thresholds = (t_AAE=0.9000, t_SAE=0.8184)
+
+--- Validation ---
+Val Accuracy: 0.8305
+Val F1:       0.8912
+AAE FPR: 0.1852
+SAE FPR: 0.1859
+FPR Gap: 0.0007
+AAE FNR: 0.1611
+SAE FNR: 0.1684
+FNR Gap: 0.0073
+
+--- Test ---
+Test Accuracy: 0.8257
+Test F1:       0.8880
+AAE FPR: 0.1852
+SAE FPR: 0.2007
+FPR Gap: 0.0155
+AAE FNR: 0.1968
+SAE FNR: 0.1573
+FNR Gap: 0.0395
+Mean FPR: 0.1929
+Mean FNR: 0.1770
+DIfav:    0.7237
+DIunfav:  1.1162
+
+--- Oracle best (selected by test_score, for reference) ---
+  lambda_adv = 1.5, adv_c = 0.5, ratio = 0.85
+  Test F1: 0.8880  FPR Gap: 0.0155  Mean FPR: 0.1929
