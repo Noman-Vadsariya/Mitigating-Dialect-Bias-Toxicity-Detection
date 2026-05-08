@@ -1,13 +1,12 @@
-# Imports
+ # Imports
 import argparse
-import json
 import os
 import joblib
 import numpy as np
 import pandas as pd
 
 from xgboost import XGBClassifier
-from sklearn.metrics import accuracy_score, f1_score
+from sklearn.metrics import accuracy_score, f1_score, classification_report, confusion_matrix
 
 
 # Argument parsing
@@ -56,8 +55,9 @@ def train_base_xgb(X_train, y_train, X_val, y_val):
         max_depth=5,
         n_estimators=100,
         learning_rate=0.1,
-        objective="binary:logistic",
-        eval_metric="logloss",
+        objective="multi:softprob",
+        num_class=3,
+        eval_metric="mlogloss",
         random_state=42
     )
 
@@ -305,53 +305,49 @@ def main():
     print("Training base XGBoost model...")
     model = train_base_xgb(X_train, y_train, X_val, y_val)
 
-    print("\nSearching vector scaling parameters on validation set...")
-    results_df, _ = search_vs_parameters(
-        model=model,
-        X_val=X_val,
-        val_df=val_df,
-        label_col=args.label_col,
-        group_col=args.dialect_col
-    )
+    print("\nEvaluating ternary XGBoost on validation set...")
+    y_val_pred = model.predict(X_val)
 
-    print("\nCandidate results:")
-    print(results_df.sort_values(by=["FPR_gap", "f1"], ascending=[True, False]).head(10))
+    print("Validation accuracy:", accuracy_score(y_val, y_val_pred))
+    print("Validation macro F1:", f1_score(y_val, y_val_pred, average="macro"))
+    print("Validation confusion matrix:")
+    print(confusion_matrix(y_val, y_val_pred))
 
-    best_params = pick_best_candidate(results_df)
+    print("\nEvaluating ternary XGBoost on test set...")
+    y_test_pred = model.predict(X_test)
 
-    print("\nBest VS parameters:")
-    print(best_params)
+    print("Test accuracy:", accuracy_score(y_test, y_test_pred))
+    print("Test macro F1:", f1_score(y_test, y_test_pred, average="macro"))
+    print("Test confusion matrix:")
+    print(confusion_matrix(y_test, y_test_pred))
 
-    print("\nApplying best VS parameters to test set...")
-    test_output_df = apply_best_vs_to_test(
-        model=model,
-        X_test=X_test,
-        test_df=test_df,
-        best_params=best_params,
-        group_col=args.dialect_col
-    )
+    print("\nClassification report:")
+    print(classification_report(y_test, y_test_pred))
 
-    test_metrics = evaluate_predictions(
-        df=test_output_df,
-        label_col=args.label_col,
-        pred_col="vs_pred",
-        group_col=args.dialect_col
-    )
+    os.makedirs(args.out_dir, exist_ok=True)
 
-    print("\nFinal test metrics:")
-    for k, v in test_metrics.items():
-        print(f"{k}: {v:.4f}" if isinstance(v, float) else f"{k}: {v}")
+    model_path = os.path.join(args.out_dir, "xgb_ternary_model.joblib")
+    preds_path = os.path.join(args.out_dir, "xgb_ternary_predictions.csv")
+    summary_txt_path = os.path.join(args.out_dir, "xgb_ternary_summary.txt")
 
-    best_params["test_metrics"] = test_metrics
-            
-    save_outputs(
-        out_dir=args.out_dir,
-        model=model,
-        results_df=results_df,
-        best_params=best_params,
-        test_output_df=test_output_df,
-        test_metrics=test_metrics
-    )
+    joblib.dump(model, model_path)
+
+    test_output_df = test_df.copy()
+    test_output_df["ternary_pred"] = y_test_pred
+    test_output_df.to_csv(preds_path, index=False)
+
+    with open(summary_txt_path, "w") as f:
+        f.write("===== XGBoost Ternary =====\n")
+        f.write(f"Accuracy: {accuracy_score(y_test, y_test_pred):.4f}\n")
+        f.write(f"Macro F1: {f1_score(y_test, y_test_pred, average='macro'):.4f}\n")
+        f.write("Confusion Matrix:\n")
+        f.write(str(confusion_matrix(y_test, y_test_pred)))
+        f.write("\n\nClassification Report:\n")
+        f.write(classification_report(y_test, y_test_pred))
+
+    print(f"\nSaved model -> {model_path}")
+    print(f"Saved predictions -> {preds_path}")
+    print(f"Saved summary -> {summary_txt_path}")
 
 
 if __name__ == "__main__":

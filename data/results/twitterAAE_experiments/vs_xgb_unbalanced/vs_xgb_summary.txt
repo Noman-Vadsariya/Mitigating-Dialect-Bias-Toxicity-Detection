@@ -1,0 +1,11 @@
+===== VS-XGBoost =====
+Accuracy: 0.8733
+F1: 0.9261
+FPR AAE: 0.4815
+FPR SAE: 0.5301
+FPR Gap: 0.0486
+FNR AAE: 0.0541
+FNR SAE: 0.0420
+FNR Gap: 0.0121
+DIfav: 0.4999
+DIunfav: 1.0777
