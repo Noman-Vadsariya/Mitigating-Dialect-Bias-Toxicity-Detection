@@ -1,0 +1,772 @@
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
+/scratch1/aqliang/haluguard-env/lib/python3.10/site-packages/xgboost/objective.py:77: FutureWarning: Since 2.1.0, the shape of the gradient and hessian is required to be (n_samples, n_targets) or (n_samples, n_classes).
+  warnings.warn(
