@@ -1,0 +1,38 @@
+==========================================
+SLURM_JOB_ID = 8153464
+SLURM_JOB_NODELIST = b11-11
+TMPDIR = /tmp/SLURM_8153464
+==========================================
+==============================================
+Array task: 1
+Node: b11-11.hpc.usc.edu
+Start time: Fri Apr 17 23:19:24 PDT 2026
+==============================================
+fairlearn 0.8.0 | xgboost 3.2.0
+Running: T1   (--enable_1)
+==============================================
+Train: 5828 | Val: 1249 | Test: 1249
+Techniques: CEO=True | Platt=False | Reductions=False | ROC=False
+
+=== RESULTS ===
+  accuracy            : 0.8271
+  f1                  : 0.8286
+  AAE_FPR             : 0.4815
+  AAE_FNR             : 0.1075
+  AAE_TPR             : 0.8925
+  AAE_acc             : 0.8451
+  AAE_pos_rate        : 0.8404
+  SAE_FPR             : 0.1689
+  SAE_FNR             : 0.1872
+  SAE_TPR             : 0.8128
+  SAE_acc             : 0.8234
+  SAE_pos_rate        : 0.4411
+  FPR_gap             : 0.3126
+  FNR_gap             : 0.0797
+  TPR_gap             : 0.0797
+  DIfav               : 0.2856
+  DIunfav             : 1.9051
+
+Saved to: data/results/fairness_ablation/T1_metrics.json
+
+Task T1 completed at: Fri Apr 17 23:19:29 PDT 2026

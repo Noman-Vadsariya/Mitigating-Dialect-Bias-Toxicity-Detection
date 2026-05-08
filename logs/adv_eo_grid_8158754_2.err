@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+There are messages associated with the following module(s):
+-------------------------------------------------------------------------------
+
+conda/25.11.0:
+   NOTE: We now recommend using micromamba instead to install and manage
+   Conda environments. See the installation guide here: https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html#automatic-install
+   In Slurm job scripts, micromamba can be enabled with the following: eval
+   "$(micromamba shell hook --shell bash)" If you have any questions,
+   contact carc-support@usc.edu.
+
+-------------------------------------------------------------------------------

@@ -1,0 +1,38 @@
+==========================================
+SLURM_JOB_ID = 8153472
+SLURM_JOB_NODELIST = a03-01
+TMPDIR = /tmp/SLURM_8153472
+==========================================
+==============================================
+Array task: 9
+Node: a03-01.hpc.usc.edu
+Start time: Fri Apr 17 23:22:03 PDT 2026
+==============================================
+fairlearn 0.8.0 | xgboost 3.2.0
+Running: T2_T4   (--enable_2 --enable_4)
+==============================================
+Train: 5828 | Val: 1249 | Test: 1249
+Techniques: CEO=False | Platt=True | Reductions=False | ROC=True
+
+=== RESULTS ===
+  accuracy            : 0.8014
+  f1                  : 0.8208
+  AAE_FPR             : 0.5185
+  AAE_FNR             : 0.0860
+  AAE_TPR             : 0.9140
+  AAE_acc             : 0.8592
+  AAE_pos_rate        : 0.8638
+  SAE_FPR             : 0.2977
+  SAE_FNR             : 0.0913
+  SAE_TPR             : 0.9087
+  SAE_acc             : 0.7896
+  SAE_pos_rate        : 0.5560
+  FPR_gap             : 0.2209
+  FNR_gap             : 0.0053
+  TPR_gap             : 0.0053
+  DIfav               : 0.3066
+  DIunfav             : 1.5537
+
+Saved to: data/results/fairness_ablation/T2_T4_metrics.json
+
+Task T2_T4 completed at: Fri Apr 17 23:22:08 PDT 2026

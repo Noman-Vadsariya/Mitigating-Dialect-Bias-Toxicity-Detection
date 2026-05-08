@@ -1,0 +1,14 @@
+==========================================
+SLURM_JOB_ID = 8152011
+SLURM_JOB_NODELIST = d06-15
+TMPDIR = /tmp/SLURM_8152011
+==========================================
+==============================================
+Adversarial XGBoost with Multi-Technique Debiasing
+==============================================
+Job ID: 8152011
+Node: d06-15.hpc.usc.edu
+Start time: Fri Apr 17 21:59:44 PDT 2026
+==============================================
+Python: /scratch1/aqliang/haluguard-env/bin/python
+==============================================

@@ -1,0 +1,38 @@
+==========================================
+SLURM_JOB_ID = 8153298
+SLURM_JOB_NODELIST = e21-04
+TMPDIR = /tmp/SLURM_8153298
+==========================================
+==============================================
+Array task: 0
+Node: e21-04.hpc.usc.edu
+Start time: Fri Apr 17 23:08:50 PDT 2026
+==============================================
+fairlearn 0.8.0 | xgboost 3.2.0
+Running: baseline   ()
+==============================================
+Train: 5828 | Val: 1249 | Test: 1249
+Techniques: CEO=False | Platt=False | Reductions=False | ROC=False
+
+=== RESULTS ===
+  accuracy            : 0.8311
+  f1                  : 0.8291
+  AAE_FPR             : 0.5185
+  AAE_FNR             : 0.1075
+  AAE_TPR             : 0.8925
+  AAE_acc             : 0.8404
+  AAE_pos_rate        : 0.8451
+  SAE_FPR             : 0.1421
+  SAE_FNR             : 0.2100
+  SAE_TPR             : 0.7900
+  SAE_acc             : 0.8292
+  SAE_pos_rate        : 0.4160
+  FPR_gap             : 0.3764
+  FNR_gap             : 0.1025
+  TPR_gap             : 0.1025
+  DIfav               : 0.2653
+  DIunfav             : 2.0313
+
+Saved to: data/results/fairness_ablation/baseline_metrics.json
+
+Task baseline completed at: Fri Apr 17 23:09:17 PDT 2026

@@ -1,0 +1,23 @@
+==========================================
+SLURM_JOB_ID = 8158442
+SLURM_JOB_NODELIST = e21-10
+TMPDIR = /tmp/SLURM_8158442
+==========================================
+==============================================
+Array task: 9   Node: e21-10.hpc.usc.edu   Start: Sat Apr 18 11:11:34 PDT 2026
+==============================================
+Running lambda=1.5  adv_c grid=0.1,0.5,1.0,3.0,10.0
+==============================================
+Train=5828 (AAE=993, SAE=4835) Val=1249 Test=1249
+Tag: lam_1.5
+Config: leaf_adv=True, reweighting=FALSE, threshold_tuning=FALSE, post_processing=NONE (pure adversarial)
+Grid: 5 cells  lambda=[1.5]  adv_c=[0.1, 0.5, 1.0, 3.0, 10.0]
+  [ 1/5] lam=1.500 c=0.10  val_f1=0.8515 val_FPR_gap=0.0746  test_f1=0.8243 test_FPR_gap=0.3327  (221s)
+  [ 2/5] lam=1.500 c=0.50  val_f1=0.8461 val_FPR_gap=0.0663  test_f1=0.8299 test_FPR_gap=0.3444  (167s)
+  [ 3/5] lam=1.500 c=1.00  val_f1=0.8434 val_FPR_gap=0.1487  test_f1=0.8275 test_FPR_gap=0.2973  (212s)
+  [ 4/5] lam=1.500 c=3.00  val_f1=0.8462 val_FPR_gap=0.0393  test_f1=0.8355 test_FPR_gap=0.2619  (388s)
+  [ 5/5] lam=1.500 c=10.00  val_f1=0.8494 val_FPR_gap=0.0629  test_f1=0.8329 test_FPR_gap=0.3377  (592s)
+
+Saved: data/results/adv_xgb_largegrid/lam_1.5_grid.csv
+
+Task lam_1.5 completed at: Sat Apr 18 11:39:26 PDT 2026

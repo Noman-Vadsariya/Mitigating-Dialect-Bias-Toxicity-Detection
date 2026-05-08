@@ -1,0 +1,13 @@
+==========================================
+SLURM_JOB_ID = 8148134
+SLURM_JOB_NODELIST = a04-09
+TMPDIR = /tmp/SLURM_8148134
+==========================================
+==============================================
+Adversarial XGBoost with Multi-Technique Debiasing
+==============================================
+Job ID: 8148134
+Node: a04-09.hpc.usc.edu
+Start time: Fri Apr 17 18:35:09 PDT 2026
+==============================================
+ERROR: No Python environment found

@@ -1,0 +1,326 @@
+================================================================
+SPEAKER SCRIPT — Adversarial De-biasing + Threshold Tuning + Challenges
+================================================================
+(5 slides total: #12–14 my methods, #19–20 project-wide challenges.
+ Dense delivery — every sentence should earn its place. ~75s/slide.)
+
+One-time framing on slide 12, never repeat:
+"All red-circled points across the next three plots are the SAME
+final model — lambda=0.25, adv_c=3.0, threshold-tuned at 0.90 F1
+floor — viewed from three angles."
+
+
+================================================================
+SLIDE 12 — Sweep over lambda
+================================================================
+
+[METHOD, ~20s]
+"My branch is adversarial debiasing, from Zhang, Lemoine & Mitchell
+2018 ('Mitigating Unwanted Biases with Adversarial Learning,'
+AAAI/AIES). Their contribution: cast fairness as a two-player game
+— a predictor minimizes task loss while an adversary tries to
+recover the protected attribute from its outputs; a gradient-
+projection trick lets you enforce demographic parity, equal
+opportunity, or equalized odds depending on what the adversary
+gets to see. I use their EO variant on XGBoost margins.
+
+Concretely: a second model — the adversary — tries to predict
+DIALECT from the classifier's outputs; a gradient-reversal term
+weighted by lambda pushes the classifier toward representations
+the adversary can't separate by dialect. That's literally
+Equalized Odds. Key design choice: the adversary sees
+(margin, y, margin*y), not just margin. Conditioning on y is what
+makes it EO rather than demographic parity — we only penalize
+dialect info NOT explained by toxicity, so the model isn't forced
+to ignore genuinely toxic content that happens to correlate with
+dialect."
+
+[PLOT + TAKEAWAY, ~35s]
+"Three curves — FPR, FNR, F1 — as lambda sweeps 0 to 1.5.
+  - lambda=0: vanilla XGBoost. 10-pt FPR gap, 9-pt FNR gap.
+  - lambda=0.15–0.25: both gaps collapse, F1 holds at ~0.82.
+  - lambda>=0.5: minimax loses equilibrium, AAE FPR spikes to 63%.
+  - lambda>=1: classifier collapses to near-uniform — gaps zero,
+    but only because it stopped discriminating usefully.
+Fairness is NOT monotonic in lambda. There's a stability window,
+and half the Zhang-2018 follow-up literature is about enlarging
+it. My best cell — lambda=0.25 — sits in the middle of that
+window. Numbers: AAE FPR 0.185, FPR gap 0.033, F1 82.3 — gap cut
+3x for under a point of F1."
+
+[EQUATION WALKTHROUGH — only if asked, ~30s]
+"L_pred = BCE(sigma(f(x)), y) - lambda * L_adv(g(f(x),y), z)
+ L_adv  = BCE(g(f(x),y), z) + (1/2c)||w_g||^2
+
+  f(x) = XGBoost margin (pre-sigmoid sum of trees).
+  sigma = logistic. y = toxicity label. z = dialect.
+  BCE = binary cross-entropy (what XGBoost uses natively).
+  g = linear logistic adversary on (margin, y, margin*y).
+  w_g = adversary's 3-weight vector. c = adv_c = sklearn's
+        inverse-L2: small c = heavy regularization = weak adversary.
+  Minus sign in L_pred = gradient reversal (Zhang's projection,
+        not literal subtraction — detail on request).
+  lambda lives only in L_pred; adv_c only in L_adv. Lambda = how
+  much we TRUST the adversary; adv_c = how EXPRESSIVE it is.
+The two losses are alternately optimized — freeze margin, refit
+adversary, boost predictor — not end-to-end jointly."
+
+
+================================================================
+SLIDE 13 — Sweep over adv_c
+================================================================
+
+[SETUP + PLOT, ~35s]
+"Fix lambda=0.25, vary adv_c. Both sweeps are non-monotonic but
+the failure mode is different: lambda's danger is at the EXTREMES,
+adv_c's is in the INTERIOR — a bathtub.
+  - c=0.5: adversary too weak; noisy F1.
+  - c=1.0: WORST cell. Strong enough to destabilize, not strong
+    enough to converge. AAE FPR jumps to 52%.
+  - c=3.0: equilibrium. F1=0.823, FPRs 0.185 / 0.152.
+  - c>=10: capacity saturates, flat.
+This is the whole intuition of adversarial training — you're
+hunting for a two-network equilibrium, not turning a fairness
+knob. A too-weak or mid-capacity adversary gives UNSTABLE
+fairness, arguably worse than an unfair-but-stable model because
+you can't predict its behavior on new data. So adv_c is a
+stability dial, not a fairness dial."
+
+[VARIANCE DECOMP, ~20s]
+"Quick variance decomposition over the grid confirms this:
+lambda explains ~54% of F1 variance across cells, adv_c explains
+~1%. adv_c doesn't move where you land on the accuracy-fairness
+tradeoff; it only governs WHETHER a given lambda converges
+cleanly. That's why I fix adv_c=3.0 — smallest capacity that
+converges reliably."
+
+
+================================================================
+SLIDE 14 — Threshold tuning
+================================================================
+
+[SETUP + EQUATION, ~25s]
+"Post-processing layer, following Hardt, Price & Srebro 2016
+('Equality of Opportunity in Supervised Learning,' NeurIPS). Their
+contribution: you don't need to retrain a biased classifier to
+make it fair — you can pick GROUP-SPECIFIC decision thresholds on
+its scores to exactly equalize TPR and FPR across groups, under
+mild conditions. It's the canonical post-hoc EO intervention, and
+proven optimal in an accuracy-preserving sense among
+post-processing methods.
+
+I apply the same idea: on val, pick DIFFERENT thresholds per group
+— the pair that minimizes the FPR gap subject to not dropping F1
+below 90% of its default. Applied at inference as a per-group
+logit shift; no retraining.
+
+  t_z* = argmin_{t in T_z} |FPR_z(t) - FPR_ref|
+  T_z  = { t : F1_z(t) >= alpha * F1_z(t_ref) }
+
+  z = group. t_z* = chosen threshold. t_ref=0.5 = default.
+  FPR_ref = SAE FPR at t_ref (lower-FPR reference group).
+  alpha=0.90 = F1 retention floor. T_z = feasible set.
+One line: 'close the FPR gap as much as possible, don't tank F1
+by more than 10%.' Not cheating — thresholds are picked on VAL,
+applied on TEST, and the decision rule is group-aware; the
+probability estimates are still group-blind, so you can deploy
+it group-blind if policy requires."
+
+[BAR CHART, ~25s]
+"Before vs. after threshold tuning on the adversarial model:
+  - FPR: AAE halves, 0.37 -> 0.185. FPR gap 0.215 -> 0.033 (~8x).
+    SAE essentially unchanged.
+  - FNR: AAE rises ~6pts — expected, raising t_AAE converts
+    former FPs into FNs. But FNR gap still shrinks, 0.11 -> 0.046.
+  - F1 / accuracy drop <1pt. Effectively free."
+
+[MECHANISM + CLOSING, ~15s]
+"Why do adversarial + threshold compose so well? Adversarial
+training alone barely moves per-group error rates — what it does
+is ALIGN the margin distributions. Once they overlap, threshold
+tuning only needs a small shift to equalize FPR, at small F1
+cost. Without adversarial, the threshold tuner would need a
+bigger shift and pay more F1. Recipe: adversary reshapes, thresh
+cashes in."
+
+
+================================================================
+SLIDE 19 — Challenges: Cross-dataset + Tradeoff
+================================================================
+
+[FRAME, ~10s]
+"Two structural challenges across ALL three methods — VS-Loss,
+threshold tuning, adversarial."
+
+[CROSS-DATASET, ~30s]
+"Everything is trained on twitterAAE. Probes on shifted
+distributions — different platforms, eras, annotators — see F1
+drop sharply. Same root cause across methods: models learn
+dataset-specific feature-toxicity correlations and fairness
+calibration rides on top. VS-Loss's alpha/beta, per-group
+thresholds, and the adversary's margin alignment are all fit to
+source statistics. Under shift, none transfer for free. This is
+the 'domain-robust fairness' open problem, and it's the single
+most important deployment caveat."
+
+[TRADEOFF, ~25s]
+"Baseline sits at 84%+ F1; every debiased variant lands at
+81–83%. That 1–3pt gap is the fairness tax. Within a method it's
+monotonic — more fairness costs F1. Across methods you get
+different Pareto points: VS-Loss pays more F1 for more fairness;
+adversarial+threshold gives the best F1-per-fairness ratio. The
+'best' method depends on how you weight the two axes — it's a
+deployment choice, not a technical one."
+
+
+================================================================
+SLIDE 20 — Challenges: Label imbalance
+================================================================
+
+[RATIO + TWO EFFECTS, ~30s]
+"25K tweets, ~20K toxic vs ~4K non-toxic. 5:1, inverted from most
+toxicity datasets. Two compounding effects: (1) the model learns
+a 'toxic is safer' prior, so over-predicts toxic — inflating FPR,
+especially on short or ambiguous tweets; (2) non-toxic is the
+minority class, so the decision boundary there is the noisiest
+part of the output — and that's exactly the region every fairness
+method has to operate in."
+
+[AMPLIFIES FAIRNESS PROBLEM, ~25s]
+"AAE clusters near that noisy boundary because it shares surface
+features with toxic content in the training distribution. Noisy
+minority boundary plus dialect over-representation near it = the
+exact baseline failure: AAE FPR ~0.37, roughly 2x SAE. Each
+method attacks a different lever: VS-Loss reweights minority
+directly, threshold tuning shifts decisions post-hoc,
+adversarial reshapes margins so the noisy zone is decorrelated
+from dialect. None solve imbalance on its own."
+
+[CLOSING, ~10s]
+"So mitigations and future work — next section — all map back to
+these three: distribution shift, fairness tax, label imbalance."
+
+
+================================================================
+Q&A — NOT in main delivery
+================================================================
+
+Q: Hardt on vanilla XGBoost without adversarial?
+A: Weaker — same F1 cost, smaller gap reduction. Adversarial +
+   threshold Pareto-dominates threshold alone.
+
+Q: Adversary accuracy over training?
+A: adv_acc_train drops 0.62 -> ~0.52 (chance) by epoch 50 in the
+   best cell. At c=1.0 (divergent) it oscillates — confirms the
+   instability diagnosis.
+
+Q: Why logistic adversary, not neural?
+A: XGBoost custom obj needs an analytic per-sample gradient
+   w.r.t. margin. Logistic gives it directly; neural needs a
+   straight-through estimator (leaf-based version did that —
+   harder to stabilize). Linear adversary keeps Zhang's
+   projection clean.
+
+Q: Minus sign — literal gradient ascent on BCE(g,z)?
+A: No, projected gradient. Raw subtraction lets the predictor
+   "cheat" along shared directions. Each round: compute grad_tox
+   and grad_adv, project grad_tox onto null space of grad_adv,
+   then subtract a weighted grad_adv. Code: _project_out(...).
+
+Q: Does predictor see L2 penalty in L_adv?
+A: No — notation loose. ||w_g||^2 depends only on adversary
+   weights; its gradient w.r.t. margin is zero. L2 shapes the
+   adversary during its fit; only the BCE term enters the
+   predictor's gradient.
+
+Q: Why 1/(2c) inverse-L2 form?
+A: sklearn LogisticRegression convention — the adversary is
+   literally sklearn. adv_c=3.0 corresponds to L2 penalty ~0.17.
+
+Q: Why L2 not L1?
+A: Only 3 features — nothing to sparsify. L2 is smooth,
+   LBFGS-friendly, monotonic in c, which matters for the grid.
+
+Q: Adversary warm-started or refit each round?
+A: Warm-started (warm_start=True). Refit-from-scratch produced
+   spikier gradient signals and worse convergence.
+
+Q: Lambda scheduling?
+A: Constant in the main sweep. Linear warmup shifted the stability
+   window but didn't change the headline — kept constant for
+   clarity.
+
+Q: What is FPR_ref?
+A: SAE FPR at default threshold (lower-FPR group as anchor).
+   "Close AAE down to SAE." Cleaner than a dataset-average
+   reference and matches Hardt 2016's construction.
+
+Q: Why absolute gap, not squared or joint FPR+FNR?
+A: For 2 groups, |.| and squared have the same argmin. Joint
+   FPR+FNR adds a second weight; AAE's dominant harm is FPR, so
+   constraining that is tighter. FNR gap falls 0.11 -> 0.046 as
+   a byproduct.
+
+Q: Why alpha=0.90 specifically?
+A: Empirical knee. Swept 0.80–1.00: at 0.95 constraint binds,
+   gap only drops to ~0.08; at 0.85 gap hits ~0.02 but F1 loses
+   ~2pts. 0.90 gives most of the gap reduction for ~1pt F1.
+
+Q: How is T_z searched?
+A: Discrete grid over t in [0,1] at 0.001 resolution. FPR and F1
+   are piecewise-constant in t, so finer resolution buys nothing.
+   One-line scan.
+
+Q: Is per-group thresholding at inference defensible?
+A: Uses z at inference, yes — classic Hardt-Price-Srebro 2016.
+   Legal: jurisdiction-specific. ML-fairness literature prefers
+   group-aware post-processing because it's the only way to hit
+   EO exactly under distributional mismatch. I'd report
+   group-blind numbers too and flag it as a deployment call.
+
+Q: Why constrained, not Lagrangian?
+A: Equivalent but less interpretable, and would add mu as a new
+   hparam to sweep. Feasible region is 1-D; constrained form
+   solves by a single scan.
+
+Q: How did you get the 54% / 1% variance split?
+A (plain): Grid is a 10x5 spreadsheet, one F1/cell. Compute the
+   grand mean G. Row averages (lambda) are far from G -> lambda
+   matters. Column averages (adv_c) are close to G -> adv_c
+   doesn't. Formalize by summing squared deviations: row-avg
+   spread / total = 0.54 (lambda), col-avg spread / total = 0.01
+   (adv_c), residual = 0.45 (interaction + noise). Even if all
+   residual were interaction, lambda's main effect still
+   dominates ~50x.
+
+A (formal): Two-way ANOVA eta-squared, no replication.
+   SS_total = sum(F1_ij - F1bar)^2
+   SS_lambda = J * sum_i(F1_{i.} - F1bar)^2  -> eta^2 = 0.539
+   SS_adv_c  = I * sum_j(F1_{.j} - F1bar)^2  -> eta^2 = 0.011
+   SS_resid  = SS_total - SS_lambda - SS_adv_c -> 0.450
+   Caveats: residual mixes interaction + noise (1 rep/cell); F1
+   bounded so ANOVA assumption approximate; val F1 gives
+   eta^2_lambda=0.33 but eta^2_adv_c still 0.01 — qualitative
+   finding robust across splits.
+
+Q: Why this method (eta-squared / ANOVA)?
+A: Variance-partitioning question, not a significance test. ANOVA
+   eta-squared is the canonical tool for factorial grids.
+   Regression would impose monotonicity (wrong — both sweeps
+   non-monotonic). Tree-based feature importance on 50 points
+   would overfit. With signal-to-noise ~50x, CI width is
+   irrelevant. Known caveat (1 rep/cell mixes interaction and
+   noise) doesn't change the headline.
+
+Q: Transfer to other protected attributes?
+A: Yes in principle — adversary only needs a categorical group
+   label. Hyperparameters would need retuning; algorithm is
+   agnostic.
+
+Q: Seed stability?
+A: 3 seeds on the chosen cell, FPR gap within +/-0.015 of 0.033.
+
+Q: Intersectional fairness (e.g. AAE x gender)?
+A: Dataset only has dialect labels, so out of scope here. Natural
+   extension: treat the intersectional group as the adversary's
+   target.
