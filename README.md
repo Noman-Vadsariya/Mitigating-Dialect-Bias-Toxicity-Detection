@@ -113,3 +113,165 @@ val_score, and **(3) plot/evaluate** using that best config.
 - `run_eval_hatexplain.sh` — Out-of-domain evaluation: takes the best
   TwitterAAE config (selected by `DATA_TAG=balanced` or `unbalanced`) and
   evaluates it on HateXplain, reporting EO metrics under covariate shift.
+
+  ## XGBoost + Vector Scaling Experiments
+
+This section lists the main commands used to run the XGBoost + vector-scaling experiments for this project.
+
+### 1. Binary XGBoost + Vector Scaling on balanced TwitterAAE
+
+Use this command to train and evaluate the binary XGBoost + vector-scaling model on the **balanced** TwitterAAE split.
+
+```bash
+python src/experiments/train_vs_xgboost.py \
+  --train_csv data/processed/twitterAAE/balanced/train.csv \
+  --val_csv data/processed/twitterAAE/balanced/val.csv \
+  --test_csv data/processed/twitterAAE/balanced/test.csv \
+  --train_emb data/embeddings/twitterAAE/balanced/train_emb.npy \
+  --val_emb data/embeddings/twitterAAE/balanced/val_emb.npy \
+  --test_emb data/embeddings/twitterAAE/balanced/test_emb.npy \
+  --dialect_col dialect_strict \
+  --out_dir data/results/vs_xgb_training
+```
+
+### 2. Binary XGBoost + Vector Scaling on unbalanced TwitterAAE
+
+Use this command to train and evaluate the binary XGBoost + vector-scaling model on the **unbalanced** TwitterAAE split.
+
+```bash
+python src/experiments/train_vs_xgboost.py \
+  --train_csv data/processed/twitterAAE/unbalanced/train.csv \
+  --val_csv data/processed/twitterAAE/unbalanced/val.csv \
+  --test_csv data/processed/twitterAAE/unbalanced/test.csv \
+  --train_emb data/embeddings/twitterAAE/unbalanced/train_emb.npy \
+  --val_emb data/embeddings/twitterAAE/unbalanced/val_emb.npy \
+  --test_emb data/embeddings/twitterAAE/unbalanced/test_emb.npy \
+  --dialect_col dialect_strict \
+  --out_dir data/results/twitterAAE_experiments/vs_xgb_unbalanced
+```
+
+### 3. Generalization test: TwitterAAE to HateXplain
+
+Use this command to train and calibrate on TwitterAAE, then test the learned vector-scaling setup directly on **HateXplain**.
+
+```bash
+python src/experiments/train_vs_xgboost.py \
+  --train_csv data/processed/twitterAAE/unbalanced/train.csv \
+  --val_csv data/processed/twitterAAE/unbalanced/val.csv \
+  --test_csv data/processed/hatexplain/test.csv \
+  --train_emb data/embeddings/twitterAAE/unbalanced/train_emb.npy \
+  --val_emb data/embeddings/twitterAAE/unbalanced/val_emb.npy \
+  --test_emb data/embeddings/hatexplain/test_emb.npy \
+  --dialect_col dialect_strict \
+  --out_dir data/results/generalization_experiments/twitterAAE_to_hatexplain_vs_xgb
+```
+
+### 4. Three-way semantic ternary XGBoost
+
+This command runs the semantic 3-class setup: **toxic / offensive / not toxic**.
+
+```bash
+python src/experiments/train_xgboost_ternary.py \
+  --train_csv data/processed/twitterAAE/unbalanced_ternary/train.csv \
+  --val_csv data/processed/twitterAAE/unbalanced_ternary/val.csv \
+  --test_csv data/processed/twitterAAE/unbalanced_ternary/test.csv \
+  --train_emb data/embeddings/twitterAAE/unbalanced_ternary/train_emb.npy \
+  --val_emb data/embeddings/twitterAAE/unbalanced_ternary/val_emb.npy \
+  --test_emb data/embeddings/twitterAAE/unbalanced_ternary/test_emb.npy \
+  --dialect_col dialect_strict \
+  --label_col label \
+  --out_dir data/results/twitterAAE_experiments/xgb_ternary
+```
+
+### 5. Weighted semantic ternary XGBoost
+
+#### Manual class weights
+
+```bash
+python src/experiments/train_xgboost_ternary.py \
+  --train_csv data/processed/twitterAAE/unbalanced_ternary/train.csv \
+  --val_csv data/processed/twitterAAE/unbalanced_ternary/val.csv \
+  --test_csv data/processed/twitterAAE/unbalanced_ternary/test.csv \
+  --train_emb data/embeddings/twitterAAE/unbalanced_ternary/train_emb.npy \
+  --val_emb data/embeddings/twitterAAE/unbalanced_ternary/val_emb.npy \
+  --test_emb data/embeddings/twitterAAE/unbalanced_ternary/test_emb.npy \
+  --dialect_col dialect_strict \
+  --label_col label \
+  --class_weights 2 3 1 \
+  --out_dir data/results/twitterAAE_experiments/xgb_ternary_w_2_3_1
+```
+
+#### Auto-weighted version
+
+```bash
+python src/experiments/train_xgboost_ternary.py \
+  --train_csv data/processed/twitterAAE/unbalanced_ternary/train.csv \
+  --val_csv data/processed/twitterAAE/unbalanced_ternary/val.csv \
+  --test_csv data/processed/twitterAAE/unbalanced_ternary/test.csv \
+  --train_emb data/embeddings/twitterAAE/unbalanced_ternary/train_emb.npy \
+  --val_emb data/embeddings/twitterAAE/unbalanced_ternary/val_emb.npy \
+  --test_emb data/embeddings/twitterAAE/unbalanced_ternary/test_emb.npy \
+  --dialect_col dialect_strict \
+  --label_col label \
+  --auto_class_weights \
+  --out_dir data/results/twitterAAE_experiments/xgb_ternary_weighted
+```
+
+### 6. Three-way unsure-band VS-XGBoost
+
+This setup creates an uncertainty band around the binary decision boundary and uses the groups **toxic / unsure / not toxic**.
+
+#### low = 0.45, high = 0.55
+
+```bash
+python src/experiments/train_vs_xgboost_unsure.py \
+  --train_csv data/processed/twitterAAE/unbalanced/train.csv \
+  --val_csv data/processed/twitterAAE/unbalanced/val.csv \
+  --test_csv data/processed/twitterAAE/unbalanced/test.csv \
+  --train_emb data/embeddings/twitterAAE/unbalanced/train_emb.npy \
+  --val_emb data/embeddings/twitterAAE/unbalanced/val_emb.npy \
+  --test_emb data/embeddings/twitterAAE/unbalanced/test_emb.npy \
+  --dialect_col dialect_strict \
+  --low 0.45 \
+  --high 0.55 \
+  --out_dir data/results/twitterAAE_experiments/vs_xgb_unsure_045_055
+```
+
+#### low = 0.40, high = 0.60
+
+```bash
+python src/experiments/train_vs_xgboost_unsure.py \
+  --train_csv data/processed/twitterAAE/unbalanced/train.csv \
+  --val_csv data/processed/twitterAAE/unbalanced/val.csv \
+  --test_csv data/processed/twitterAAE/unbalanced/test.csv \
+  --train_emb data/embeddings/twitterAAE/unbalanced/train_emb.npy \
+  --val_emb data/embeddings/twitterAAE/unbalanced/val_emb.npy \
+  --test_emb data/embeddings/twitterAAE/unbalanced/test_emb.npy \
+  --dialect_col dialect_strict \
+  --low 0.40 \
+  --high 0.60 \
+  --out_dir data/results/twitterAAE_experiments/vs_xgb_unsure_040_060
+```
+
+#### low = 0.35, high = 0.65
+
+```bash
+python src/experiments/train_vs_xgboost_unsure.py \
+  --train_csv data/processed/twitterAAE/unbalanced/train.csv \
+  --val_csv data/processed/twitterAAE/unbalanced/val.csv \
+  --test_csv data/processed/twitterAAE/unbalanced/test.csv \
+  --train_emb data/embeddings/twitterAAE/unbalanced/train_emb.npy \
+  --val_emb data/embeddings/twitterAAE/unbalanced/val_emb.npy \
+  --test_emb data/embeddings/twitterAAE/unbalanced/test_emb.npy \
+  --dialect_col dialect_strict \
+  --low 0.35 \
+  --high 0.65 \
+  --out_dir data/results/twitterAAE_experiments/vs_xgb_unsure_035_065
+```
+
+## Notes
+
+- `train_vs_xgboost.py` is the main script for the binary XGBoost + vector-scaling pipeline.
+- `train_xgboost_ternary.py` is the semantic ternary XGBoost script.
+- `train_vs_xgboost_unsure.py` is the uncertainty-band variant.
+- Output folders contain summaries, predictions, and candidate settings for each run.
