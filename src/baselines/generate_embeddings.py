@@ -59,4 +59,5 @@ if __name__ == "__main__":
     # process_split("../../data/processed/twitterAAE/unbalanced_ternary/train.csv", "../../data/embeddings/twitterAAE/unbalanced_ternary/train_emb.npy")
     # process_split("../../data/processed/twitterAAE/unbalanced_ternary/val.csv", "../../data/embeddings/twitterAAE/unbalanced_ternary/val_emb.npy")
     # process_split("../../data/processed/twitterAAE/unbalanced_ternary/test.csv", "../../data/embeddings/twitterAAE/unbalanced_ternary/test_emb.npy")  
-    process_split("../../data/processed/hateXplain/test.csv", "../../data/embeddings/hateXplain/test_emb.npy")  
+    
+    process_split("../../data/processed/hatexplain/test.csv", "../../data/embeddings/hateXplain/test_emb.npy")  

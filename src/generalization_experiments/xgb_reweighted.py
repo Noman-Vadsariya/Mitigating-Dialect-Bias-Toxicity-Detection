@@ -34,25 +34,25 @@ MAX_LEN = 128
 # Update these paths to your actual saved checkpoints
 MODEL_SPECS = [
     {
-        "name": "XGBoost",
+        "name": "2.25",
         "type": "xgb",
         "path": "../../models/xgb_reweighted_alpha_2_25.joblib",
         "input": "emb",
     },
     {
-        "name": "XGBoost",
+        "name": "2.5",
         "type": "xgb",
         "path": "../../models/xgb_reweighted_alpha_2_5.joblib",
         "input": "emb",
     },
     {
-        "name": "XGBoost",
+        "name": "5.75",
         "type": "xgb",
         "path": "../../models/xgb_reweighted_alpha_5_75.joblib",
         "input": "emb",
     },
     {
-        "name": "XGBoost",
+        "name": "6.75",
         "type": "xgb",
         "path": "../../models/xgb_reweighted_alpha_6_75.joblib",
         "input": "emb",
