@@ -6,9 +6,7 @@ from torch.utils.data import Dataset
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trainer
 from sklearn.metrics import accuracy_score, f1_score
 
-# =========================
 # CONFIG
-# =========================
 MODEL_DIR = "../../models/bert_finetuned/checkpoint-730"   # folder saved by Trainer
 TEST_CSV = "../../data/processed/hatexplain/test.csv"
 # OUTPUT_CSV = "../../data/results/twitterAAE_baselines/bert_finetuned_predictions.csv"
@@ -16,14 +14,10 @@ OUTPUT_CSV = "../../data/results/hatexplain_baselines/bert_finetuned_predictions
 MAX_LEN = 128
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-# =========================
 # LOAD DATA
-# =========================
 test_df = pd.read_csv(TEST_CSV)
 
-# =========================
 # TOKENIZER
-# =========================
 tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
 
 def tokenize(texts):
@@ -37,9 +31,7 @@ def tokenize(texts):
 
 test_enc = tokenize(test_df["tweet"])
 
-# =========================
 # DATASET
-# =========================
 class CustomDataset(Dataset):
     def __init__(self, encodings, labels=None):
         self.encodings = encodings
@@ -56,15 +48,11 @@ class CustomDataset(Dataset):
 
 test_dataset = CustomDataset(test_enc, test_df["label"].values)
 
-# =========================
 # LOAD TRAINED MODEL
-# =========================
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
 model.to(DEVICE)
 
-# =========================
 # PREDICTION HELPER
-# =========================
 trainer = Trainer(model=model)
 
 print("Running inference on test set...")
@@ -76,9 +64,7 @@ logits = predictions.predictions
 probs = torch.softmax(torch.tensor(logits), dim=1)[:, 1].numpy()
 preds = np.argmax(logits, axis=1)
 
-# =========================
 # SAVE OUTPUT
-# =========================
 test_df["bert_prob"] = probs
 test_df["bert_pred"] = preds
 
@@ -87,9 +73,7 @@ test_df.to_csv(OUTPUT_CSV, index=False)
 
 print(f"Saved predictions to {OUTPUT_CSV}")
 
-# =========================
 # METRICS
-# =========================
 acc = accuracy_score(test_df["label"], preds)
 f1 = f1_score(test_df["label"], preds)
 

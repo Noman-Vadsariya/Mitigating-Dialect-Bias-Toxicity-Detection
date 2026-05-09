@@ -6,26 +6,18 @@ from transformers import Trainer, TrainingArguments
 from sklearn.metrics import accuracy_score, f1_score
 import os
 
-# =========================
-# CONFIG
-# =========================
 MODEL_NAME = "bert-base-uncased"
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-# =========================
-# LOAD DATA
-# =========================
 # train_df = pd.read_csv("../../data/processed/twitterAAE/train.csv")
 # val_df = pd.read_csv("../../data/processed/twitterAAE/val.csv")
 # test_df = pd.read_csv("../../data/processed/twitterAAE/test.csv")
 
-train_df = pd.read_csv("../../data/processed/twitterAAE/unbalanced/train.csv")
-val_df = pd.read_csv("../../data/processed/twitterAAE/unbalanced/val.csv")
-test_df = pd.read_csv("../../data/processed/twitterAAE/unbalanced/test.csv")
+train_df = pd.read_csv("data/processed/twitterAAE/unbalanced/train.csv")
+val_df = pd.read_csv("data/processed/twitterAAE/unbalanced/val.csv")
+test_df = pd.read_csv("data/processed/twitterAAE/unbalanced/test.csv")
 
-# =========================
-# TOKENIZER
-# =========================
+
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 
 def tokenize(texts):
@@ -40,9 +32,6 @@ train_enc = tokenize(train_df["tweet"])
 val_enc = tokenize(val_df["tweet"])
 test_enc = tokenize(test_df["tweet"])
 
-# =========================
-# DATASET CLASS
-# =========================
 class CustomDataset(torch.utils.data.Dataset):
     def __init__(self, encodings, labels):
         self.encodings = encodings
@@ -60,9 +49,6 @@ train_dataset = CustomDataset(train_enc, train_df["label"].values)
 val_dataset = CustomDataset(val_enc, val_df["label"].values)
 test_dataset = CustomDataset(test_enc, test_df["label"].values)
 
-# =========================
-# MODEL
-# =========================
 model = AutoModelForSequenceClassification.from_pretrained(
     MODEL_NAME,
     num_labels=2,
@@ -71,9 +57,6 @@ model = AutoModelForSequenceClassification.from_pretrained(
 
 model.to(DEVICE)
 
-# =========================
-# METRICS
-# =========================
 def compute_metrics(eval_pred):
     logits, labels = eval_pred
     preds = np.argmax(logits, axis=1)
@@ -83,11 +66,9 @@ def compute_metrics(eval_pred):
         "f1": f1_score(labels, preds)
     }
 
-# =========================
-# TRAINING CONFIG (v5 compatible)
-# =========================
+
 training_args = TrainingArguments(
-    output_dir="../../models/bert_finetuned",
+    output_dir="models/bert_finetuned",
     learning_rate=2e-5,
     per_device_train_batch_size=16,
     per_device_eval_batch_size=16,
@@ -98,9 +79,6 @@ training_args = TrainingArguments(
     save_total_limit=1
 )
 
-# =========================
-# TRAINER
-# =========================
 trainer = Trainer(
     model=model,
     args=training_args,
@@ -109,15 +87,9 @@ trainer = Trainer(
     compute_metrics=compute_metrics
 )
 
-# =========================
-# TRAIN
-# =========================
 print("Training BERT...")
 trainer.train()
 
-# =========================
-# PREDICT ON TEST
-# =========================
 print("Running inference...")
 
 predictions = trainer.predict(test_dataset)
@@ -126,18 +98,12 @@ logits = predictions.predictions
 preds = np.argmax(logits, axis=1)
 probs = torch.softmax(torch.tensor(logits), dim=1)[:, 1].numpy()
 
-# =========================
-# SAVE RESULTS
-# =========================
 test_df["bert_prob"] = probs
 test_df["bert_pred"] = preds
 
-test_df.to_csv("../../data/results/twitterAAE_baselines/bert_finetuned_predictions.csv", index=False)
+os.makedirs("results", exist_ok=True)
+test_df.to_csv("results/bert_finetuned_predictions.csv", index=False)
 
-
-# =========================
-# FINAL METRICS
-# =========================
 acc = accuracy_score(test_df["label"], preds)
 f1 = f1_score(test_df["label"], preds)
 

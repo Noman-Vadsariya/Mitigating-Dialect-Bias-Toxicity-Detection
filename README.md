@@ -29,10 +29,10 @@ This repository contains code and experiments for dialect bias mitigation in tox
   python src/baselines/toxicbert_inference.py
   ```
 
-- **XGBoost Baseline** (`src/baselines/xgboost.py`): Trains a standard XGBoost classifier on text embeddings.
+- **XGBoost Baseline** (`src/baselines/train_xgboost.py`): Trains a standard XGBoost classifier on text embeddings.
 
   ```bash
-  python src/baselines/xgboost.py
+  python src/baselines/train_xgboost.py
   ```
 
 ## Experiments

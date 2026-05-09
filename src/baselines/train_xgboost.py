@@ -6,14 +6,14 @@ import joblib
 import os
 
 # Load embeddings
-X_train = np.load("../../data/embeddings/twitterAAE/unbalanced/train_emb.npy")
-X_val = np.load("../../data/embeddings/twitterAAE/unbalanced/val_emb.npy")
-X_test = np.load("../../data/embeddings/twitterAAE/unbalanced/test_emb.npy")
+X_train = np.load("data/embeddings/twitterAAE/unbalanced/train_emb.npy")
+X_val = np.load("data/embeddings/twitterAAE/unbalanced/val_emb.npy")
+X_test = np.load("data/embeddings/twitterAAE/unbalanced/test_emb.npy")
 
 # Load labels
-train_df = pd.read_csv("../../data/processed/twitterAAE/unbalanced/train.csv")
-val_df = pd.read_csv("../../data/processed/twitterAAE/unbalanced/val.csv")
-test_df = pd.read_csv("../../data/processed/twitterAAE/unbalanced/test.csv")
+train_df = pd.read_csv("data/processed/twitterAAE/unbalanced/train.csv")
+val_df = pd.read_csv("data/processed/twitterAAE/unbalanced/val.csv")
+test_df = pd.read_csv("data/processed/twitterAAE/unbalanced/test.csv")
 
 y_train = train_df["label"]
 y_val = val_df["label"]
@@ -46,18 +46,16 @@ print(f"Accuracy: {acc:.4f}")
 print(f"F1 Score: {f1:.4f}")
 
 # Save model
-joblib.dump(model, "../../models/xgb_baseline.joblib")
+os.makedirs("models", exist_ok=True)
+joblib.dump(model, "models/xgb_baseline.joblib")
 
-# =========================
 # SAVE PREDICTIONS
-# =========================
-
 test_df["xgb_pred"] = y_pred
 test_df["xgb_prob"] = model.predict_proba(X_test)[:, 1]
 
 # Save
-os.makedirs("../../data/results", exist_ok=True)
+os.makedirs("results", exist_ok=True)
 
-test_df.to_csv("../../data/results/xgb_predictions.csv", index=False)
+test_df.to_csv("results/xgb_predictions.csv", index=False)
 
-print("Saved XGBoost predictions → ../../data/results/xgb_predictions.csv")
+print("Saved XGBoost predictions → results/xgb_predictions.csv")
