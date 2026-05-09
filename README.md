@@ -1,13 +1,13 @@
 # CSCI567-ML-Project
 
-This repository contains code and experiments for dialect bias mitigation in toxicity detection, focusing on the TwitterAAE and HateXplain datasets. The project implements and evaluates several baselines and fairness-aware algorithms for text classification, with an emphasis on reducing false positives for African-American English (AAE) dialects.
+This repository contains code and experiments for dialect bias mitigation in toxicity detection, focusing on the TwitterAAE and HateXplain datasets. The project implements and evaluates several baselines and fairness-aware algorithms for text classification, with an emphasis on reducing false positives for African-American English (AAE) dialects while maintaining overall performance.
 
 ## Project Structure
 
 - **data/**: Processed datasets, embeddings, and raw data.
+- **refactored_twitter_aae/**: Code for dataset preprocessing and dialect prediction
 - **results/**: Model predictions, metrics, and plots.
-- **src/**: Source code for baselines, experiments, and utilities.
-- **model/**: Model vocabularies and count tables.
+- **src/**: Source code for baselines, experiments, and plotting utils.
 
 ## Baselines Implemented
 
