@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 from pathlib import Path
 from typing import Dict, List, Tuple
 
@@ -11,14 +10,11 @@ import pandas as pd
 from sklearn.metrics import accuracy_score, f1_score
 from xgboost import XGBClassifier
 
-
-# =========================
 # CONFIG
-# =========================
-EMB_DIR = Path("../../data/embeddings/twitterAAE/balanced/")
-DATA_DIR = Path("../../data/processed/twitterAAE/balanced/")
-RESULTS_DIR = Path("../../data/results/twitterAAE_experiments/xgb")
-MODELS_DIR = Path("../../models")
+EMB_DIR = Path("data/embeddings/twitterAAE/balanced/")
+DATA_DIR = Path("data/processed/twitterAAE/balanced/")
+RESULTS_DIR = Path("results/twitterAAE_experiments/xgb")
+MODELS_DIR = Path("models")
 
 TRAIN_EMB = EMB_DIR / "train_emb.npy"
 VAL_EMB = EMB_DIR / "val_emb.npy"
@@ -49,7 +45,10 @@ XGB_PARAMS = dict(
 # HELPERS
 # =========================
 
-def load_embeddings_and_data() -> Tuple[np.ndarray, np.ndarray, np.ndarray, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+
+def load_embeddings_and_data() -> Tuple[
+    np.ndarray, np.ndarray, np.ndarray, pd.DataFrame, pd.DataFrame, pd.DataFrame
+]:
     """Load embeddings and processed CSVs."""
     X_train = np.load(TRAIN_EMB)
     X_val = np.load(VAL_EMB)
@@ -71,7 +70,9 @@ def normalize_dialect(series: pd.Series) -> np.ndarray:
     return mapped.values.astype(int)
 
 
-def compute_sample_weights(dialect: np.ndarray, labels: np.ndarray, alpha: float) -> np.ndarray:
+def compute_sample_weights(
+    dialect: np.ndarray, labels: np.ndarray, alpha: float
+) -> np.ndarray:
     """Weight AAE non-toxic examples more heavily.
 
     Args:
@@ -85,7 +86,9 @@ def compute_sample_weights(dialect: np.ndarray, labels: np.ndarray, alpha: float
     return weights
 
 
-def fpr_fnr_by_group(y_true: np.ndarray, y_pred: np.ndarray, group: np.ndarray) -> Dict[str, float]:
+def fpr_fnr_by_group(
+    y_true: np.ndarray, y_pred: np.ndarray, group: np.ndarray
+) -> Dict[str, float]:
     """Compute FPR/FNR for AAE and SAE."""
     out: Dict[str, float] = {}
 
@@ -156,10 +159,6 @@ def train_and_eval_one_alpha(
     return metrics, test_prob, test_pred, model
 
 
-# =========================
-# MAIN
-# =========================
-
 def main() -> None:
     X_train, X_val, X_test, train_df, val_df, test_df = load_embeddings_and_data()
 
@@ -191,14 +190,19 @@ def main() -> None:
         )
 
         # Save model for this alpha
-        model_path = MODELS_DIR / f"xgb_reweighted_alpha_{str(alpha).replace('.', '_')}.joblib"
+        model_path = (
+            MODELS_DIR / f"xgb_reweighted_alpha_{str(alpha).replace('.', '_')}.joblib"
+        )
         joblib.dump(model, model_path)
 
         # Save test predictions for this alpha
         pred_df = test_df.copy()
         pred_df["xgb_prob"] = test_prob
         pred_df["xgb_pred"] = test_pred
-        pred_df.to_csv(RESULTS_DIR / f"xgb_predictions_alpha_{str(alpha).replace('.', '_')}.csv", index=False)
+        pred_df.to_csv(
+            RESULTS_DIR / f"xgb_predictions_alpha_{str(alpha).replace('.', '_')}.csv",
+            index=False,
+        )
 
         all_metrics.append(metrics)
 
@@ -226,7 +230,7 @@ def main() -> None:
     plt.figure(figsize=(8, 5))
     plt.plot(metrics_df["alpha"], metrics_df["fnr_AAE"], marker="o", label="FNR AAE")
     plt.plot(metrics_df["alpha"], metrics_df["fnr_SAE"], marker="o", label="FNR SAE")
-    plt.plot(metrics_df["alpha"], metrics_df["fnr_gap"], marker="o", label="FNR Gap")   
+    plt.plot(metrics_df["alpha"], metrics_df["fnr_gap"], marker="o", label="FNR Gap")
     plt.xlabel("AAE non-toxic weight (alpha)")
     plt.ylabel("FNR")
     plt.title("FNR vs Re-weighting Strength")

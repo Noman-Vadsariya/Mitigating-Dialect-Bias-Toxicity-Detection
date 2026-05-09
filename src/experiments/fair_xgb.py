@@ -1,34 +1,6 @@
-"""XGBoost custom objective for dialect fairness mitigation.
-
+"""
 Objective:
-    L = (1 - gamma) * L_BCE + gamma * L_fair
-
-Where:
-    - L_BCE is standard binary cross-entropy over toxicity labels.
-    - L_fair is a differentiable surrogate that penalizes higher average predicted
-      toxicity on non-toxic AAE examples compared with non-toxic SAE examples.
-
-Why this surrogate?
-    - Your issue is high false positives on AAE.
-    - FPR itself is not differentiable because it depends on thresholded outputs.
-    - This proxy pushes down the model's toxic score on negative AAE examples,
-      which is a good training-time signal for reducing FPR_AAE.
-
-Inputs:
-    - Embeddings saved as .npy files for train/val/test.
-    - CSVs with columns:
-        label (0/1)
-        dialect_strict (AAE/SAE)
-
-Outputs:
-    - A metrics table across gamma values.
-    - Prediction CSV for each gamma.
-    - Line plots for FPR/FNR/F1 tradeoffs.
-
-Notes:
-    - This uses XGBoost's sklearn API with a custom objective callable.
-    - If your installed xgboost version does not accept a callable objective in
-      XGBClassifier, you can adapt the same formulas to xgb.train.
+    L = (1 - gamma) * L_BCE + gamma * Square FPR Gap
 """
 
 from __future__ import annotations
@@ -47,11 +19,10 @@ from xgboost import XGBClassifier
 # =========================
 # Config
 # =========================
-EMB_DIR = Path("../../data/embeddings")
-DATA_DIR = Path("../../data/processed/twitterAAE")
-# RESULTS_DIR = Path("../../data/results/twitterAAE_experiments/fair_xgb/CE_FPR_squared_loss")
-RESULTS_DIR = Path("../../data/results/twitterAAE_experiments/fair_xgb/CE_FPR_squared_loss_relaxed")
-MODELS_DIR = Path("../../models")
+EMB_DIR = Path("data/embeddings/twitterAAE/balanced")
+DATA_DIR = Path("data/processed/twitterAAE/balanced")  # using balanced splits for this experiment since we're focusing on fairness, not overall performance
+RESULTS_DIR = Path("results/twitterAAE_experiments/fair_xgb")
+MODELS_DIR = Path("models")
 
 TRAIN_EMB = EMB_DIR / "train_emb.npy"
 VAL_EMB = EMB_DIR / "val_emb.npy"
@@ -277,7 +248,7 @@ def main() -> None:
 
     results: List[Dict[str, float]] = []
 
-    for gamma in np.arange(0, 1, 1/50):
+    for gamma in np.arange(0, 1, 1 / 50):
         print(f"\n=== Training gamma={gamma:.2f} ===")
 
         objective = make_fair_objective(y_train, g_train, gamma)
@@ -313,23 +284,23 @@ def main() -> None:
 
         results.append(
             {
-                "gamma": gamma,
-                "val_accuracy": val_metrics["accuracy"],
-                "val_f1": val_metrics["f1"],
-                "val_fpr_AAE": val_metrics["fpr_AAE"],
-                "val_fpr_SAE": val_metrics["fpr_SAE"],
-                "val_fpr_gap": val_metrics["fpr_gap"],
-                "val_fnr_AAE": val_metrics["fnr_AAE"],
-                "val_fnr_SAE": val_metrics["fnr_SAE"],
-                "val_fnr_gap": val_metrics["fnr_gap"],
-                "test_accuracy": test_metrics["accuracy"],
-                "test_f1": test_metrics["f1"],
-                "test_fpr_AAE": test_metrics["fpr_AAE"],
-                "test_fpr_SAE": test_metrics["fpr_SAE"],
-                "test_fpr_gap": test_metrics["fpr_gap"],
-                "test_fnr_AAE": test_metrics["fnr_AAE"],
-                "test_fnr_SAE": test_metrics["fnr_SAE"],
-                "test_fnr_gap": test_metrics["fnr_gap"],
+            "gamma": gamma,
+            "val_accuracy": val_metrics["accuracy"],
+            "val_f1": val_metrics["f1"],
+            "val_fpr_AAE": val_metrics["fpr_AAE"],
+            "val_fpr_SAE": val_metrics["fpr_SAE"],
+            "val_fpr_gap": val_metrics["fpr_gap"],
+            "val_fnr_AAE": val_metrics["fnr_AAE"],
+            "val_fnr_SAE": val_metrics["fnr_SAE"],
+            "val_fnr_gap": val_metrics["fnr_gap"],
+            "test_accuracy": test_metrics["accuracy"],
+            "test_f1": test_metrics["f1"],
+            "test_fpr_AAE": test_metrics["fpr_AAE"],
+            "test_fpr_SAE": test_metrics["fpr_SAE"],
+            "test_fpr_gap": test_metrics["fpr_gap"],
+            "test_fnr_AAE": test_metrics["fnr_AAE"],
+            "test_fnr_SAE": test_metrics["fnr_SAE"],
+            "test_fnr_gap": test_metrics["fnr_gap"],
             }
         )
 

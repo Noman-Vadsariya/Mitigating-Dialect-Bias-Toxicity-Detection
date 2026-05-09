@@ -12,10 +12,10 @@ from sklearn.metrics import accuracy_score, f1_score
 from xgboost import XGBClassifier
 
 
-EMB_DIR = Path("../../data/embeddings")
-DATA_DIR = Path("../../data/processed/twitterAAE")
-RESULTS_DIR = Path("../../data/results/twitterAAE_experiments/xgb")
-MODELS_DIR = Path("../../models")
+EMB_DIR = Path("data/embeddings")
+DATA_DIR = Path("data/processed/twitterAAE")
+RESULTS_DIR = Path("results/twitterAAE_experiments/xgb")
+MODELS_DIR = Path("models")
 
 TRAIN_EMB = EMB_DIR / "train_emb.npy"
 VAL_EMB = EMB_DIR / "val_emb.npy"
@@ -53,10 +53,7 @@ XGB_PARAMS = dict(
 )
 
 
-# =========================
 # HELPERS
-# =========================
-
 def load_data() -> Tuple[np.ndarray, np.ndarray, np.ndarray, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Load embeddings and processed CSV files."""
     X_train = np.load(TRAIN_EMB)

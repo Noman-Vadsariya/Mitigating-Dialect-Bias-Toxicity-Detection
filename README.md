@@ -11,6 +11,18 @@ This repository contains code and experiments for dialect bias mitigation in tox
 
 ## Baselines Implemented
 
+- **XGBoost Baseline** (`src/baselines/train_xgboost.py`): Trains a standard XGBoost classifier on text embeddings.
+
+  ```bash
+  python src/baselines/train_xgboost.py
+  ```
+
+- **ToxicBERT Inference** (`src/baselines/toxicbert_inference.py`): Uses the pre-trained ToxicBERT model for toxicity prediction.
+
+  ```bash
+  python src/baselines/toxicbert_inference.py
+  ```
+
 - **BERT Fine-tuning** (`src/baselines/finetune_bert.py`): Fine-tunes a BERT model for toxicity classification.
 
   ```bash
@@ -23,29 +35,35 @@ This repository contains code and experiments for dialect bias mitigation in tox
   python src/baselines/bert_inference.py
   ```
 
-- **ToxicBERT Inference** (`src/baselines/toxicbert_inference.py`): Uses the pre-trained ToxicBERT model for toxicity prediction.
-
-  ```bash
-  python src/baselines/toxicbert_inference.py
-  ```
-
-- **XGBoost Baseline** (`src/baselines/train_xgboost.py`): Trains a standard XGBoost classifier on text embeddings.
-
-  ```bash
-  python src/baselines/train_xgboost.py
-  ```
-
 ## Experiments
 
 - **XGBoost Re-weighting Experiment**(`src/experiments/fair_xgb.py`): Weight AAE non-toxic examples more heavily to reduce false positives on AAE.
 
+  ```bash
+  python src/experiments/xgb_reweighted.py
+  ```
+
 - **XGBoost Objectives**:
-  - **Fairness with Gamma Surrogate** (`src/experiments/fair_xgb.py`): Penalizes higher toxic scores for AAE using a differentiable surrogate.
+  - **Fairness-Aware Training with XgBoost** (`src/experiments/fair_xgb.py`): Combines task (BCE) and fairness (gap penalty) losses.
+    - BCE: optimizes toxicity detection.
+    - Gap penalty: reduces AAE/SAE disparity.
+    - Gamma: balances performance and fairness.
 
-- **Adversarial XGBoost**:
-  - **Adversarial Training** (`src/experiments/train_adv_xgb.py`): Trains XGBoost with an adversarial fairness objective.
+  ```bash
+  python src/experiments/fair_xgb.py
+  ```
 
-  - **Equalized Odds Grid Search** (`src/experiments/run_adv_eo_grid.py`): Grid search over adversarial and fairness hyperparameters.
+- **XGBoost Group Thresholding Experiment**(`src/experiments/xgb_group_thresholding.py`): Here we apply different decision thresholds for AAE and SAE at inference time. The idea was to reduce false
+positives for AAE by requiring higher confidence before predicting “toxic” for that group. 
+
+  ```bash
+  python src/experiments/xgb_group_thresholding.py
+  ```
+
+  - **Adversarial XGBoost**:
+    - **Adversarial Training** (`src/experiments/train_adv_xgb.py`): Trains XGBoost with an adversarial fairness objective.
+
+    - **Equalized Odds Grid Search** (`src/experiments/run_adv_eo_grid.py`): Grid search over adversarial and fairness hyperparameters.
 
 - **Postprocessing and Metrics**:
   - **Fairness Postprocessing** (`src/experiments/fairness_postprocess.py`): Computes group metrics and postprocesses predictions.
