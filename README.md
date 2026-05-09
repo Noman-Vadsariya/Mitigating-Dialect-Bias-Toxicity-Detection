@@ -1,15 +1,34 @@
 # CSCI567-ML-Project
 
+This repository contains code and experiments for dialect bias mitigation in toxicity detection, focusing on the TwitterAAE and HateXplain datasets. The project implements and evaluates several baselines and fairness-aware algorithms for text classification, with an emphasis on reducing false positives for African-American English (AAE) dialects while maintaining overall performance.
+
 ## Table of Contents
 
+- [Setup](#setup)
 - [Project Structure](#project-structure)
 - [Baselines](#baselines)
 - [Experiments](#experiments)
   - [XGBoost + Vector Scaling Experiments](#xgboost--vector-scaling-experiments)
   - [Adversarial Debiasing Experiments](#adversarial-debiasing-experiments)
 
-This repository contains code and experiments for dialect bias mitigation in toxicity detection, focusing on the TwitterAAE and HateXplain datasets. The project implements and evaluates several baselines and fairness-aware algorithms for text classification, with an emphasis on reducing false positives for African-American English (AAE) dialects while maintaining overall performance.
+## Setup
 
+1. **Clone the repository:**
+  ```bash
+  git clone https://github.com/Noman-Vadsariya/CSCI567-ML-Project.git
+  cd CSCI567-ML-Project
+  ```
+
+2. **Create and activate a Python virtual environment (recommended):**
+  ```bash
+  python3 -m venv venv
+  source venv/bin/activate
+  ```
+
+3. **Install dependencies:**
+  ```bash
+  pip install -r requirements.txt
+  ```
 
 ## Project Structure
 
@@ -231,9 +250,14 @@ python src/experiments/train_vs_xgboost_unsure.py \
 - [src/experiments/train_vs_xgboost_unsure.py](src/experiments/train_vs_xgboost_unsure.py) is the uncertainty-band variant.
 
 
+
+
 ## Adversarial Debiasing Experiments
 
-This section lists the main commands used to run the adversarial debiasing experiments for this project, with a brief explanation of each script.
+This section lists the main commands used to run the adversarial debiasing experiments for this project. 
+
+> **Note:** All scripts in this section are run through Slurm. Before running any of the runner scripts in this section, update the `cd` path (e.g., `cd /scratch1/aqliang/CSCI567-ML-Project`) at the top of each script to match your own project directory on your cluster or local machine.
+
 
 ### 1. Linear-adversary XGBoost (TwitterAAE, balanced)
 
