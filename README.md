@@ -1,6 +1,15 @@
 # CSCI567-ML-Project
 
+## Table of Contents
+
+- [Project Structure](#project-structure)
+- [Baselines](#baselines)
+- [Experiments](#experiments)
+  - [XGBoost + Vector Scaling Experiments](#xgboost--vector-scaling-experiments)
+  - [Adversarial Debiasing Experiments](#adversarial-debiasing-experiments)
+
 This repository contains code and experiments for dialect bias mitigation in toxicity detection, focusing on the TwitterAAE and HateXplain datasets. The project implements and evaluates several baselines and fairness-aware algorithms for text classification, with an emphasis on reducing false positives for African-American English (AAE) dialects while maintaining overall performance.
+
 
 ## Project Structure
 
@@ -9,27 +18,28 @@ This repository contains code and experiments for dialect bias mitigation in tox
 - **results/**: Model predictions, metrics, and plots.
 - **src/**: Source code for baselines, experiments, and plotting utils.
 
+
 ## Baselines
 
-- **XGBoost Baseline** (`src/baselines/train_xgboost.py`): Trains a standard XGBoost classifier on text embeddings.
+- **XGBoost Baseline** ([src/baselines/train_xgboost.py](src/baselines/train_xgboost.py)): Trains a standard XGBoost classifier on text embeddings.
 
   ```bash
   python src/baselines/train_xgboost.py
   ```
 
-- **ToxicBERT Inference** (`src/baselines/toxicbert_inference.py`): Uses the pre-trained ToxicBERT model for toxicity prediction.
+- **ToxicBERT Inference** ([src/baselines/toxicbert_inference.py](src/baselines/toxicbert_inference.py)): Uses the pre-trained ToxicBERT model for toxicity prediction.
 
   ```bash
   python src/baselines/toxicbert_inference.py
   ```
 
-- **BERT Fine-tuning** (`src/baselines/finetune_bert.py`): Fine-tunes a BERT model for toxicity classification.
+- **BERT Fine-tuning** ([src/baselines/finetune_bert.py](src/baselines/finetune_bert.py)): Fine-tunes a BERT model for toxicity classification.
 
   ```bash
   python src/baselines/finetune_bert.py
   ```
 
-- **BERT Inference** (`src/baselines/bert_inference.py`): Runs inference using a fine-tuned BERT model.
+- **BERT Inference** ([src/baselines/bert_inference.py](src/baselines/bert_inference.py)): Runs inference using a fine-tuned BERT model.
 
   ```bash
   python src/baselines/bert_inference.py
@@ -37,25 +47,23 @@ This repository contains code and experiments for dialect bias mitigation in tox
 
 ## Experiments
 
-- **XGBoost Re-weighting Experiment**(`src/experiments/fair_xgb.py`): Weight AAE non-toxic examples more heavily to reduce false positives on AAE.
+- **XGBoost Re-weighting Experiment** ([src/experiments/fair_xgb.py](src/experiments/fair_xgb.py)): Weight AAE non-toxic examples more heavily to reduce false positives on AAE.
 
   ```bash
   python src/experiments/xgb_reweighted.py
   ```
 
-- **XGBoost Objectives**:
-  - **Fairness-Aware Training with XgBoost** (`src/experiments/fair_xgb.py`): Combines task (BCE) and fairness (gap penalty) losses.
-    - BCE: optimizes toxicity detection.
-    - Gap penalty: reduces AAE/SAE disparity.
-    - Gamma: balances performance and fairness.
+- **Fairness-Aware Training with XgBoost** ([src/experiments/fair_xgb.py](src/experiments/fair_xgb.py)): Combines task (BCE) and fairness (gap penalty) losses.
+  - BCE: optimizes toxicity detection.
+  - Gap penalty: reduces AAE/SAE disparity.
+  - Gamma: balances performance and fairness.
 
 
   ```bash
   python src/experiments/fair_xgb.py
   ```
 
-- **XGBoost Group Thresholding**(`src/experiments/xgb_group_thresholding.py`): Here we apply different decision thresholds for AAE and SAE at inference time. The idea was to reduce false
-positives for AAE by requiring higher confidence before predicting “toxic” for that group. 
+- **XGBoost Group Thresholding** ([src/experiments/xgb_group_thresholding.py](src/experiments/xgb_group_thresholding.py)): Here we apply different decision thresholds for AAE and SAE at inference time. The idea was to reduce false positives for AAE by requiring higher confidence before predicting “toxic” for that group.
 
   ```bash
   python src/experiments/xgb_group_thresholding.py
@@ -218,9 +226,9 @@ python src/experiments/train_vs_xgboost_unsure.py \
 
 ## Notes
 
-- `train_vs_xgboost.py` is the main script for the binary XGBoost + vector-scaling pipeline.
-- `train_xgboost_ternary.py` is the semantic ternary XGBoost script.
-- `train_vs_xgboost_unsure.py` is the uncertainty-band variant.
+- [src/experiments/train_vs_xgboost.py](src/experiments/train_vs_xgboost.py) is the main script for the binary XGBoost + vector-scaling pipeline.
+- [src/experiments/train_xgboost_ternary.py](src/experiments/train_xgboost_ternary.py) is the semantic ternary XGBoost script.
+- [src/experiments/train_vs_xgboost_unsure.py](src/experiments/train_vs_xgboost_unsure.py) is the uncertainty-band variant.
 
 
 ## Adversarial Debiasing Experiments
