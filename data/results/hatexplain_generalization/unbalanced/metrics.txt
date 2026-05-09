@@ -1,0 +1,60 @@
+HateXplain Generalization Metrics  --  source model: unbalanced TwitterAAE
+========================================================================
+
+Best candidate (from EO grid on source train):
+  lambda_adv = 1.5
+  adv_c      = 0.5
+  min_f1_ratio = 0.85
+  thresholds = (t_AAE=0.9000, t_SAE=0.8184)
+
+===== In-domain test (TwitterAAE) -- tuned thresholds =====
+Accuracy: 0.8257
+F1:       0.8880
+AAE FPR:  0.1852
+SAE FPR:  0.2007
+FPR Gap:  0.0155
+AAE FNR:  0.1968
+SAE FNR:  0.1573
+FNR Gap:  0.0395
+Mean FPR: 0.1929
+DIfav:    0.7237
+DIunfav:  1.1162
+
+===== Out-of-domain test (HateXplain) -- tuned thresholds =====
+Accuracy: 0.5476
+F1:       0.5311
+AAE FPR:  0.7177
+SAE FPR:  0.4060
+FPR Gap:  0.3117
+AAE FNR:  0.2009
+SAE FNR:  0.4960
+FNR Gap:  0.2952
+Mean FPR: 0.5619
+DIfav:    0.4519
+DIunfav:  1.6560
+
+===== In-domain test (TwitterAAE) -- threshold 0.5/0.5 =====
+Accuracy: 0.8860
+F1:       0.9341
+AAE FPR:  0.7778
+SAE FPR:  0.5234
+FPR Gap:  0.2544
+AAE FNR:  0.0086
+SAE FNR:  0.0378
+FNR Gap:  0.0292
+Mean FPR: 0.6506
+DIfav:    0.1108
+DIunfav:  1.1360
+
+===== Out-of-domain test (HateXplain) -- threshold 0.5/0.5 =====
+Accuracy: 0.5388
+F1:       0.6444
+AAE FPR:  0.9762
+SAE FPR:  0.7500
+FPR Gap:  0.2262
+AAE FNR:  0.0085
+SAE FNR:  0.1688
+FNR Gap:  0.1603
+Mean FPR: 0.8631
+DIfav:    0.0814
+DIunfav:  1.2431

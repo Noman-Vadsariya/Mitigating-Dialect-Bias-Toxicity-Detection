@@ -1,0 +1,37 @@
+Abstain Adversarial XGBoost (toxic / nontoxic / unsure) Summary
+Dataset: TwitterAAE unbalanced
+================================================================
+
+Best candidate (selected by val_score):
+  lambda_adv   = 0.05
+  adv_c        = 3.0
+  min_f1_ratio = 0.85
+  min_coverage = 0.7
+  AAE: threshold=0.8200  deadband=+/-0.0300
+  SAE: threshold=0.6200  deadband=+/-0.0300
+
+--- Val ---
+Selective F1:        0.9349
+Selective Accuracy:  0.8901
+Coverage:            0.9742
+Abstain rate:        0.0258
+AAE FPR: 0.3810   SAE FPR: 0.3679   FPR Gap: 0.0131
+AAE FNR: 0.0498   SAE FNR: 0.0651   FNR Gap: 0.0153
+AAE abstain: 0.0284   SAE abstain: 0.0250   Abstain Gap: 0.0034
+AAE coverage: 0.9716   SAE coverage: 0.9750
+Mean FPR: 0.3744   Mean FNR: 0.0574   |EO balance|: 0.3170
+
+--- Test ---
+Selective F1:        0.9344
+Selective Accuracy:  0.8891
+Coverage:            0.9726
+Abstain rate:        0.0274
+AAE FPR: 0.4762   SAE FPR: 0.3908   FPR Gap: 0.0853
+AAE FNR: 0.0473   SAE FNR: 0.0594   FNR Gap: 0.0121
+AAE abstain: 0.0452   SAE abstain: 0.0213   Abstain Gap: 0.0238
+AAE coverage: 0.9548   SAE coverage: 0.9787
+Mean FPR: 0.4335   Mean FNR: 0.0533   |EO balance|: 0.3802
+
+--- Oracle best (selected by test_score, for reference) ---
+  lambda_adv=0.4  adv_c=0.1  ratio=0.99  cov>=0.7
+  Test sel_F1=0.9289  coverage=0.9887  FPR_gap=0.0812  FNR_gap=0.0098
