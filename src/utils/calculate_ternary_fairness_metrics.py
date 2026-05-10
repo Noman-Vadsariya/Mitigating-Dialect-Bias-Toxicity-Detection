@@ -4,9 +4,7 @@ import matplotlib.pyplot as plt
 
 from sklearn.metrics import accuracy_score, f1_score, classification_report
 
-# =========================
 # LOAD DATA
-# =========================
 df = pd.read_csv("../../data/results/twitterAAE_baselines/unbalanced_ternary/all_predictions.csv")
 # expected columns:
 # label, dialect_strict, xgb_pred, bert_pred, toxicbert_pred
@@ -17,9 +15,7 @@ MODELS = {
     "ToxicBERT": "toxicbert_pred"
 }
 
-# =========================
 # HELPERS
-# =========================
 def compute_fpr_fnr_ternary(y_true, y_pred, dialect):
     """
     Ternary setup:
@@ -57,9 +53,7 @@ def pct(x):
     return x * 100
 
 
-# =========================
 # METRIC COMPUTATION
-# =========================
 rows = []
 
 y_true = df["label"].values.astype(int)
@@ -102,9 +96,7 @@ metrics_df.to_csv("../../data/results/metrics.csv", index=False)
 
 print(metrics_df)
 
-# =========================
 # PLOTTING
-# =========================
 def plot_accuracy(df):
     x = np.arange(len(df))
 
@@ -219,10 +211,7 @@ def plot_FNR(df):
 
     plt.show()
 
-
-# =========================
 # RUN ALL PLOTS
-# =========================
 plot_accuracy(metrics_df)
 plot_F1(metrics_df)
 plot_F1_class(metrics_df)
