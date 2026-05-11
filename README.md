@@ -33,8 +33,8 @@ This repository contains code and experiments for dialect bias mitigation in tox
 ## Project Structure
 
 - **data/**: Processed datasets, embeddings, and raw data.
+  - **results/**: Model predictions, metrics, and plots.
 - **refactored_twitter_aae/**: Code for dataset preprocessing and dialect prediction
-- **results/**: Model predictions, metrics, and plots.
 - **src/**: Source code for baselines, experiments, and plotting utils.
 
 
@@ -66,7 +66,7 @@ This repository contains code and experiments for dialect bias mitigation in tox
 
 ## Experiments
 
-- **XGBoost Re-weighting Experiment** ([src/experiments/fair_xgb.py](src/experiments/xgb_reweighted.py)): Weight AAE non-toxic examples more heavily to reduce false positives on AAE.
+- **XGBoost Re-weighting Experiment** ([src/experiments/xgb_reweighted.py](src/experiments/xgb_reweighted.py)): Weight AAE non-toxic examples more heavily to reduce false positives on AAE.
 
   ```bash
   python src/experiments/xgb_reweighted.py
